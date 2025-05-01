@@ -263,3 +263,75 @@ if ( ! function_exists( 'hello_elementor_body_open' ) ) {
 		wp_body_open();
 	}
 }
+
+// Заменяет первую ссылку пагинации на сслыку без параметров Задание 3
+add_filter('paginate_links', 'remove_page_1_from_pagination', 10, 2);
+function remove_page_1_from_pagination($link) {
+	if (strpos($link, '/page/1/') !== false) {
+        // Получаем базовый URL без пагинации
+        $base_url = preg_replace('#/page/1/?([/?"])#', '$1', $link);
+        return $base_url;
+    }
+    return $link;
+}
+
+// Исправление атрибута rel="canonical" на страницах категории товаров
+add_filter( 'wpseo_canonical', 'fix_yoast_canonical_on_pagination' );
+function fix_yoast_canonical_on_pagination( $canonical ) {
+    if ( is_paged() && is_product_category() ) {
+        $term = get_queried_object();
+        if ( $term && isset( $term->term_id ) ) {
+            $url = get_term_link( $term );
+            if ( ! is_wp_error( $url ) ) {
+                return $url;
+            }
+        }
+    }
+
+    // Для главной страницы магазина (если нужна)
+    if ( is_paged() && is_shop() ) {
+        return get_permalink( wc_get_page_id( 'shop' ) );
+    }
+
+    return $canonical;
+}
+
+
+
+// НЕ работает В файлах Sitemap отсутствуют значения changefreq и priority.
+add_filter('wpseo_enable_xml_sitemap_transient_caching', '__return_false');
+
+add_filter( 'wpseo_sitemap_entry', 'upakovych_custom_sitemap_fields', 10, 3 );
+
+function upakovych_custom_sitemap_fields( $url, $type, $object ) {
+    $url['changefreq'] = 'daily'; // для всех элементов
+
+    // Главная страница
+    if ( is_front_page() || ( isset( $object->ID ) && (int) $object->ID === (int) get_option( 'page_on_front' ) ) ) {
+        $url['priority'] = '1.0';
+    }
+
+    // Страница магазина WooCommerce
+    elseif ( isset( $object->ID ) && (int) $object->ID === wc_get_page_id( 'shop' ) ) {
+        $url['priority'] = '0.9';
+    }
+
+    // Категории товаров
+    elseif ( $type === 'term' && isset( $object->taxonomy ) && $object->taxonomy === 'product_cat' ) {
+        $url['priority'] = '0.9';
+    }
+
+    // Товары
+    elseif ( $type === 'post' && isset( $object->post_type ) && $object->post_type === 'product' ) {
+        $url['priority'] = '0.8';
+    }
+
+    // Все остальные страницы
+    else {
+        $url['priority'] = '0.5';
+    }
+
+    return $url;
+}
+
+
