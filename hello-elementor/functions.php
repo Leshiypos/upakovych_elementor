@@ -151,6 +151,12 @@ if ( ! function_exists( 'hello_elementor_scripts_styles' ) ) {
 		}
 	}
 }
+add_action( 'wp_enqueue_scripts', 'custom_script' );
+
+function custom_script(){
+	wp_enqueue_script( 'custom-script', get_template_directory_uri(  ).'/assets/custom/custom.js', array('jquery'), null, true );
+}
+
 add_action( 'wp_enqueue_scripts', 'hello_elementor_scripts_styles' );
 
 if ( ! function_exists( 'hello_elementor_register_elementor_locations' ) ) {
@@ -298,40 +304,24 @@ function fix_yoast_canonical_on_pagination( $canonical ) {
 
 
 
-// НЕ работает В файлах Sitemap отсутствуют значения changefreq и priority.
-add_filter('wpseo_enable_xml_sitemap_transient_caching', '__return_false');
 
-add_filter( 'wpseo_sitemap_entry', 'upakovych_custom_sitemap_fields', 10, 3 );
 
-function upakovych_custom_sitemap_fields( $url, $type, $object ) {
-    $url['changefreq'] = 'daily'; // для всех элементов
+add_filter('wpseo_metadesc', 'custom_limit_yoast_metadesc_clean', 10, 1);
 
-    // Главная страница
-    if ( is_front_page() || ( isset( $object->ID ) && (int) $object->ID === (int) get_option( 'page_on_front' ) ) ) {
-        $url['priority'] = '1.0';
+function custom_limit_yoast_metadesc_clean($metadesc) {
+    $max_length = 400;
+
+    if (mb_strlen($metadesc) > $max_length) {
+        $trimmed = mb_substr($metadesc, 0, $max_length);
+        
+        // Обрезаем по последнему пробелу, чтобы не резать слово
+        $last_space = mb_strrpos($trimmed, ' ');
+        if ($last_space !== false) {
+            $trimmed = mb_substr($trimmed, 0, $last_space);
+        }
+
+        $metadesc = rtrim($trimmed, " .,;:-");
     }
 
-    // Страница магазина WooCommerce
-    elseif ( isset( $object->ID ) && (int) $object->ID === wc_get_page_id( 'shop' ) ) {
-        $url['priority'] = '0.9';
-    }
-
-    // Категории товаров
-    elseif ( $type === 'term' && isset( $object->taxonomy ) && $object->taxonomy === 'product_cat' ) {
-        $url['priority'] = '0.9';
-    }
-
-    // Товары
-    elseif ( $type === 'post' && isset( $object->post_type ) && $object->post_type === 'product' ) {
-        $url['priority'] = '0.8';
-    }
-
-    // Все остальные страницы
-    else {
-        $url['priority'] = '0.5';
-    }
-
-    return $url;
+    return $metadesc; 
 }
-
-
