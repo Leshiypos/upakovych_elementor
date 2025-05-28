@@ -151,10 +151,25 @@ if ( ! function_exists( 'hello_elementor_scripts_styles' ) ) {
 		}
 	}
 }
+//Вставляем код яндекс метрики
+add_action( 'wp_footer', 'yandex_metrika_action' );
+function yandex_metrika_action(){
+	echo <<<END
+	<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date(); for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }} k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(100712159, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/100712159" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+	END;
+}
+
+
+
+
+
+
 add_action( 'wp_enqueue_scripts', 'custom_script' );
 
 function custom_script(){
 	wp_enqueue_script( 'custom-script', get_template_directory_uri(  ).'/assets/custom/custom.js', array('jquery'), null, true );
+	wp_enqueue_script( 'reach-goal-script', get_template_directory_uri(  ).'/assets/custom/yandexReachGoal.js', array(), null, true );
+	wp_enqueue_style('custom-theme-style',get_template_directory_uri() . '/assets/custom/custom.css',[],'1.0.0');
 }
 
 add_action( 'wp_enqueue_scripts', 'hello_elementor_scripts_styles' );
@@ -207,10 +222,10 @@ if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
 			return;
 		}
 
-		echo '<meta name="description" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
+		echo '<meta name="description2" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
 	}
 }
-add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
+//add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
 
 // Admin notice
 if ( is_admin() ) {
@@ -325,3 +340,9 @@ function custom_limit_yoast_metadesc_clean($metadesc) {
 
     return $metadesc; 
 }
+
+// wp-dev - правки woocomerce
+
+//Переопределяем положение описание в категориях после цикла с товарами  /wp-content/themes/hello-elementor/woocommerce/archive-product.php
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+add_action( 'woocommerce_after_shop_loop', 'woocommerce_taxonomy_archive_description', 5 ); // приоритет 5 — до пагинации
