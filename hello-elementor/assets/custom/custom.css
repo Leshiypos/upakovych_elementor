@@ -1,0 +1,133 @@
+.elementor-57 .elementor-element.elementor-element-6fea11c {
+  max-width: 1240px !important;
+  justify-content: space-between !important;
+}
+.woocommerce div.product div.images img {
+  width: fit-content;
+}
+.elementor-1173 .elementor-element.elementor-element-fe682f3 {
+  max-width: 1140px;
+}
+
+/* Реакция элементов на наведение мышью - ФУТЕР */
+
+footer .elementor-widget-container span a:hover {
+  color: #bcd128 !important;
+  text-decoration: underline;
+}
+
+/* Логотип сайта */
+.logo_name {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: fit-content;
+}
+.logo_name a {
+  font-size: calc(16px + 12 * (100vw / 1920));
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff;
+}
+.logo_name a:hover {
+  color: #bcd128 !important;
+}
+
+.footer_info {
+  font-weight: 200;
+  color: rgbe(255, 255, 255, 0.7);
+}
+.footer_info a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: underline;
+}
+.footer_info a:hover {
+  color: #bcd128;
+}
+/* Иконки формы */
+.metform-form-content .elementor-element-5d4f4c1 {
+  min-width: 190px !important;
+}
+.metform-form-main-wrapper .e-con-inner {
+  justify-content: space-between !important;
+}
+.metform-form-main-wrapper .e-con-boxed {
+  padding: 0 !important;
+  padding: 0 !important;
+}
+.social_icon_form {
+  display: flex;
+  justify-content: flex-end;
+}
+.social_icon_form a {
+  background-color: transparent;
+}
+.social_icon_form a svg.e-fab-whatsapp {
+  fill: #bcd128;
+}
+.social_icon_form a svg.e-fab-whatsapp:hover {
+  fill: #8d9d15;
+}
+.social_icon_form a svg.e-fab-telegram {
+  fill: #59aacd;
+}
+.social_icon_form a svg.e-fab-telegram:hover {
+  fill: #55ccff;
+}
+
+/* Иконки в header */
+header .icon.icon-email:hover::before {
+  color: #399bc6 !important; /* Ваш желаемый цвет */
+  transition: color 0.2s;
+}
+header .e-fab-whatsapp:hover,
+header .e-fas-shopping-basket:hover {
+  fill: #8d9d15 !important;
+  transition: color 0.2s;
+}
+header .e-fab-whatsapp,
+header .e-fas-shopping-basket {
+  fill: #bcd128 !important;
+}
+header .e-fab-telegram:hover {
+  fill: #399bc6 !important;
+  transition: color 0.2s;
+}
+/* Строка поиска */
+header .search-input-header {
+  width: auto !important;
+}
+header .search-input-header.elementor-sticky--active {
+  top: 130px !important;
+  right: 30px !important;
+}
+/* Иконки в footer */
+footer .elementor-57 .elementor-social-icon {
+  background-color: transparent !important;
+}
+footer .elementor-57 .elementor-social-icon svg {
+  transition: all 200ms;
+}
+footer .elementor-57 .elementor-social-icon:hover svg {
+  fill: #bcd128 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .elementor-2
+    .elementor-element.elementor-element-c474a05:not(
+      .elementor-motion-effects-element-type-background
+    ),
+  .elementor-2
+    .elementor-element.elementor-element-c474a05
+    > .elementor-motion-effects-container
+    > .elementor-motion-effects-layer {
+    background-image: url(https://upakovych.ru/wp-content/uploads/2024/03/3227455_mob.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+
+  .elementor-2 .elementor-element.elementor-element-c474a05 {
+    --min-height: 105px;
+  }
+}
