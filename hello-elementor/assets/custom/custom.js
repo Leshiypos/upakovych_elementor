@@ -27,13 +27,6 @@ window.addEventListener("load", () => {
 
   //   Маска для формы
 
-  const phoneInputs = document.querySelectorAll(".phone-mask input");
-
-  phoneInputs.forEach(function (input) {
-    input.addEventListener("input", formatPhone);
-    input.addEventListener("keydown", handleBackspace);
-  });
-
   function formatPhone(e) {
     const input = e.target;
     let value = input.value.replace(/\D/g, "").slice(0, 11);
@@ -64,4 +57,66 @@ window.addEventListener("load", () => {
       input.dispatchEvent(fakeEvent);
     }
   }
+
+  setTimeout(() => {
+    const phoneInputs = document.querySelectorAll("input[type='tel']");
+    console.log(phoneInputs);
+
+    phoneInputs.forEach(function (input) {
+      input.addEventListener("input", formatPhone);
+      input.addEventListener("keydown", handleBackspace);
+    });
+  }, 1000);
+
+  //   7form
+  function initPhoneHandlers() {
+    const phoneInputs = document.querySelectorAll(".wpcf7-tel");
+    phoneInputs.forEach((input) => {
+      input.removeEventListener("input", formatPhone); // во избежание дубликатов
+      input.removeEventListener("keydown", handleBackspace);
+      input.addEventListener("input", formatPhone);
+      input.addEventListener("keydown", handleBackspace);
+    });
+  }
+
+  // 1. При загрузке страницы
+  document.addEventListener("DOMContentLoaded", initPhoneHandlers);
+
+  // 2. Следим за появлением элементов
+  const observer = new MutationObserver((mutations) => {
+    for (let mutation of mutations) {
+      if (mutation.addedNodes.length && document.querySelector(".wpcf7-tel")) {
+        initPhoneHandlers();
+        break;
+      }
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+  //   7form конец
+
+  // Инициализация swiper
+  new Swiper(".related-products-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    autoplay: {
+      delay: 3000,
+    },
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    },
+  });
 });

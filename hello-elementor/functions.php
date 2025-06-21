@@ -225,6 +225,13 @@ if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
 		echo '<meta name="description2" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
 	}
 }
+
+// Установка чата Jiro.ru
+add_action( 'wp_head', 'jivo_chat_script' );
+
+function jivo_chat_script() {
+	echo '<script src="//code.jivo.ru/widget/dAcBxdDrkC" async></script>';
+}							
 //add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
 
 // Admin notice
@@ -346,3 +353,237 @@ function custom_limit_yoast_metadesc_clean($metadesc) {
 //Переопределяем положение описание в категориях после цикла с товарами  /wp-content/themes/hello-elementor/woocommerce/archive-product.php
 remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 add_action( 'woocommerce_after_shop_loop', 'woocommerce_taxonomy_archive_description', 5 ); // приоритет 5 — до пагинации
+
+
+// Регистрация POST TYpe
+// Регистрация POST TYPE Скидки
+add_action('init','upavovych_cpt' );
+
+function upavovych_cpt(){
+	register_post_type( 'discounts', array(
+        'labels'             => array(
+			'name'               => 'Скидки', // основное название для типа записи
+			'singular_name'      => 'Скидка', // название для одной записи этого типа
+			'add_new'            => 'Добавить скидку', // для добавления новой записи
+			'add_new_item'       => 'Добавление скидки', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактирование скидки', // для редактирования типа записи
+			'new_item'           => 'Новая скидка', // текст новой записи
+			'view_item'          => 'Смотреть скидку', // для просмотра записи этого типа.
+			'search_items'       => 'Искать скидку', // для поиска по этим типам записи
+			'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родителей (у древовидных типов)
+			'menu_name'          => 'Скидки', // название меню
+        ),
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'discounts' ),
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 4,
+        'menu_icon'          => 'dashicons-yes',
+        'supports'           => array( 'title','thumbnail'),
+		'taxonomies'		 => array('product_cat')
+    ) );
+	
+}
+
+// Shortcodes
+
+// Шорткод для категории товаров
+function ea_related_products_swiper() {
+    if ( ! is_product() ) return;
+
+    global $post;
+
+    $terms = get_the_terms( $post->ID, 'product_cat' );
+    if ( empty($terms) || is_wp_error($terms) ) return '';
+
+    $term_ids = wp_list_pluck( $terms, 'term_id' );
+
+    $args = array(
+        'post_type'      => 'product',
+        'posts_per_page' => 8,
+        'post__not_in'   => array( $post->ID ),
+        'tax_query'      => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'term_id',
+                'terms'    => $term_ids,
+            ),
+        ),
+    );
+
+    $loop = new WP_Query( $args );
+    if ( ! $loop->have_posts() ) return '';
+
+    ob_start(); ?>
+
+    <div class="swiper-container related-products-swiper">
+        <div class="swiper-wrapper">
+            <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                <div class="swiper-slide">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if ( has_post_thumbnail() ) {
+                                    the_post_thumbnail('medium');
+                                } ?>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <h2 class="woocommerce-loop-product__title"><?php the_title(); ?></h2>
+                            <?php woocommerce_template_loop_price(); ?>
+                            <?php woocommerce_template_loop_add_to_cart(); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        </div>
+
+        <!-- Pagination and navigation -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <?php
+    wp_reset_postdata();
+    return ob_get_clean();
+}
+add_shortcode( 'ea_related_by_cat', 'ea_related_products_swiper' ); //Рабочий шорткод [ea_related_by_cat]
+
+// Shortcode for discount percentage
+
+add_shortcode('discounts_percentage', 'discount_percentage_func'); //Рабочий шорткод [discounts_percentage]
+
+function discount_percentage_func(){
+	$arg = array (
+		'post_type' => 'discounts',
+		'posts_per_page' => -1,
+		'meta_key' => 'position',        // Название поля ACF
+		'orderby'   => 'meta_value_num', // Если значение числовое
+		'order'     => 'ASC',            // Или DESC, если нужно от большего к меньшему
+	);
+	$discounts = new WP_Query($arg);
+	if ( ! $discounts->have_posts() ) return 'Скидок нет';
+
+		ob_start();?>
+		<div class="discount-grid">
+		<?php 
+			while( $discounts->have_posts() ){
+				$discounts->the_post();
+				
+				$title = get_field('title');
+				$discount_per = get_field('discount_per');
+				$description = get_field('description');
+				$is_vip = get_field('is_vip');
+				?>
+					<div class="discount-box">
+						<div class="circle <?php echo $discount_per ? 'red' : 'blue'; ?>"><?php echo $discount_per ? esc_html($discount_per) : ''; ?>%</div>
+						<strong><?php echo $title ? esc_html($title) : ''; ?></strong>
+						<?php echo $is_vip ? '<div class="vip">+ <span>VIP статус</span></div>' : ''; ?>
+						<p><?php echo $description ? esc_html($description) : ''; ?></p>
+					</div>
+				<?php
+			}
+			wp_reset_postdata(); // сбрасываем переменную $post
+			?>
+			</div>
+			<?php
+		return ob_get_clean();
+};
+
+// Добавление филтров на страницы
+
+function script_remove_null_filter(){
+	?>
+	<script>
+		let filterItem = document.querySelectorAll('.wpc-filters-section');
+		filterItem.forEach((element)=>{
+			console.log(element.querySelectorAll('input[value="0"]'))
+			element.querySelectorAll('input[value="0"]').length == 2 ? 
+			element.remove() : null
+		}
+	)
+
+
+	</script>	
+	<?php
+
+}
+
+//  Четерехклапанные коробки
+add_action('woocommerce_before_shop_loop', function() {
+	$filtred_category = array(
+		'chetirehklyapannie-korobki',
+		'samosbornie-korobki',
+		'samosbornie-korobki-s-okoshkom',
+		'termoetiketki-plg-v-t-ch-transfernye-termotransfernye',
+		'termoetiketki-top',
+		'termoetiketki-eko-samokleyashchiesya-etikety-v-rulonakh-eko'
+	);
+	$not_filtred_category = array(
+		'gofrotary',
+		'korobki',
+		'termоetiketki-samokleiyushchiesya-etiketki',
+		'pakety-iz-vozdushno-puzirchatoy-plyonki',
+		'pakety-iz-vozdushno-puzirchatoy-plyonki',
+		'tsvetnaya-vozdushno-puzirchataya-plyonka-2-sloya',
+		'tsvetnaya-streych-plenka',
+		'streych-plenka',
+		'kleykiye-lenty-skotch',
+		'grippery-zip-lock-pakety-s-zamkom',
+		'pakety-slaydery-s-begunkom'
+	);
+    if (!is_product_category($not_filtred_category)) {
+        echo do_shortcode('[fe_widget]');
+		add_action('wp_footer', 'script_remove_null_filter');
+    }
+}, 5);
+
+
+
+
+
+// // Термоэтикетки
+// add_action('woocommerce_before_shop_loop', function() {
+// 	$filtred_category = array(
+// 		'termoetiketki-plg-v-t-ch-transfernye-termotransfernye',
+// 		'termoetiketki-top',
+// 		'termoetiketki-eko-samokleyashchiesya-etikety-v-rulonakh-eko',
+// 	);
+//     if (is_product_category($filtred_category)) {
+//         echo do_shortcode('[fe_widget id="7034"]');
+//     }
+// }, 5);
+
+
+
+
+
+
+// add_action('woocommerce_before_shop_loop', function() {
+// 	$term = get_queried_object();
+// 	if (!$term || empty($term->slug)) return;
+
+// 	$slug = $term->slug;
+
+// 	$filters = [
+// 		// Категории для коробок
+// 		'chetirehklyapannie-korobki' => 6878,
+// 		'samosbornie-korobki' => 6878,
+// 		'samosbornie-korobki-s-okoshkom' => 6878,
+
+// 		// Категории для термоэтикеток
+// 		'termoetiketki-plg-v-t-ch-transfernye-termotransfernye' => 7034,
+// 		'termoetiketki-top' => 7034,
+// 		'termoetiketki-eko-samokleyashchiesya-etikety-v-rulonakh-eko' => 7034,
+// 	];
+
+// 	if (isset($filters[$slug])) {
+// 		echo do_shortcode('[fe_widget id="' . $filters[$slug] . '"]');
+// 	}
+// }, 5);

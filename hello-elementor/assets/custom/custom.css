@@ -99,7 +99,7 @@ header .search-input-header {
   width: auto !important;
 }
 header .search-input-header.elementor-sticky--active {
-  top: 130px !important;
+  top: 160px !important;
   right: 30px !important;
 }
 /* Иконки в footer */
@@ -111,6 +111,219 @@ footer .elementor-57 .elementor-social-icon svg {
 }
 footer .elementor-57 .elementor-social-icon:hover svg {
   fill: #bcd128 !important;
+}
+#masthead .elementor-button {
+  font-size: 14px !important;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Страница "Спасибо за заявку" */
+.thanks_page .section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.thanks_page .section.thanks img {
+  float: right;
+}
+
+.thanks_page ul {
+  padding-left: 20px;
+}
+
+.thanks_page .reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.thanks_page .review-card {
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  flex: 1 1 300px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.thanks_page .review-card img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.thanks_page .review-content {
+  flex-grow: 1;
+}
+
+.thanks_page .review-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.thanks_page .review-position {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.thanks_page .review-text {
+  font-style: italic;
+}
+
+.thanks_page .social-links ul,
+.thanks_page .publications ul {
+  list-style-type: disc;
+}
+
+/* Страница Контакты */
+
+.сompany_details .header-info {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.сompany_details .header-info strong {
+  font-size: 16px;
+  display: block;
+  margin-top: 5px;
+}
+.сompany_details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+.сompany_details th,
+td {
+  border: 1px solid #000;
+  padding: 8px 12px;
+  vertical-align: top;
+  text-align: left;
+}
+.сompany_details th {
+  background-color: #f0f0f0;
+  width: 35%;
+}
+
+/* Страница О нас */
+
+:root {
+  --color-primary: #007d7b;
+  --color-secondary: #c5d92f;
+  --color-dark: #003d3b;
+  --color-bg: #ffffff;
+  --color-light: #f9f9f9;
+}
+* {
+  box-sizing: border-box;
+}
+.about_page section {
+  margin-bottom: 60px;
+}
+.about_page .images_our_store {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.about_page .images_our_store img {
+  flex: 1 1 300px;
+  width: 100%;
+  max-width: 400px;
+}
+.about_page .hero {
+  background: linear-gradient(to right, #f2f0ee, #eae4de);
+  border-radius: 40px;
+  padding: 60px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.about_page .hero p {
+  font-size: 16px;
+}
+.about_page .hero img {
+  max-width: 300px;
+  border-radius: 8px;
+}
+.about_page .hero div {
+  flex: 1 400px;
+}
+
+.about_page ul {
+  padding-left: 20px;
+}
+.about_page li {
+  margin-bottom: 10px;
+}
+.about_page .features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.about_page .feature {
+  flex: 1 1 30%;
+  border-left: 4px solid var(--color-secondary);
+  padding-left: 15px;
+  background-color: #f6f6f6;
+  border-radius: 6px;
+  padding: 15px;
+}
+.about_page .faq,
+.about_page .certificates,
+.about_page .requisites {
+  background-color: var(--color-light);
+  padding: 20px;
+  border-radius: 8px;
+}
+.about_page .clients img {
+  /* width: fit-content; */
+  height: 50px;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px;
+  border: 2px solid #007d7b;
+}
+.about_page .feature img.svg_icon {
+  width: 50px;
+  height: 50px;
+}
+.reviews_about {
+  max-width: 761px;
+}
+
+/* Pop-ap Заказать звонок */
+
+#popmake-6653 {
+  max-width: 400px !important;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #008081;
+  margin: 5px;
+}
+#popmake-6653 .pum-close.popmake-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#popmake-6653 .pum-close.popmake-close:hover {
+  color: red !important;
+  transition: color 0.2s;
+}
+@media screen and (max-width: 400px) {
+  #popmake-6653 {
+    max-width: 100% !important;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -130,4 +343,227 @@ footer .elementor-57 .elementor-social-icon:hover svg {
   .elementor-2 .elementor-element.elementor-element-c474a05 {
     --min-height: 105px;
   }
+}
+
+/* Pop-up быстрый заказ */
+
+.blockUI.blockMsg {
+  border-radius: 10px !important;
+  border: 3px solid #008081 !important;
+}
+.blockUI.blockMsg .awooc-close {
+  color: red !important;
+  transition: color 0.2s;
+}
+.blockUI.blockMsg .awooc-close:hover {
+  color: red !important;
+}
+
+input.wpcf7-submit {
+  color: #ffffff;
+  border-radius: 5px 5px 5px 5px;
+  border-style: none;
+  background-color: #548072;
+}
+input.wpcf7-submit:hover {
+  background-color: #38594f;
+}
+
+/* Карусель в Карточке товара */
+.related-products-swiper {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.related-products-swiper .product-card {
+  background: #f5f7fc;
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  height: 100%;
+}
+.related-products-swiper .product-card .product-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.related-products-swiper .product-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007d7b;
+  margin: 10px 0;
+}
+
+@media screen and (min-width: 1000px) {
+  #main_form {
+    min-width: 190px !important;
+  }
+}
+/* Logo */
+.elementor-44 .elementor-element.elementor-element-006b4bf.e-con {
+  width: fit-content;
+  gap: 0;
+}
+
+@media (max-width: 1024px) {
+  .elementor-2 .elementor-element.elementor-element-c413459 {
+    padding-top: 120px;
+  }
+}
+@media screen and (min-width: 800px) {
+  .elementor-element-e31cdd8,
+  .elementor-element-8e2735f,
+  .elementor-element-971382a,
+  .elementor-element-12e4af7 {
+    display: none;
+  }
+}
+
+/* Всплывающее окно */
+.woocommerce-store-notice,
+p.woocommerce-store-notice.demo_store {
+  border-radius: 20px 0 0 20px;
+  position: fixed;
+  top: 25%;
+  right: 0 !important;
+  left: inherit;
+  margin: 0;
+  width: 400px;
+  font-size: 1em;
+  padding: 1em 0;
+  text-align: center;
+  background-color: #720eec;
+  color: #fcfbfe;
+  z-index: 99998;
+  box-shadow: 0 1px 1em rgb(0 0 0 / 0.2);
+  display: none;
+  height: fit-content;
+  transform: translateX(100%);
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+/* Кнопка Купить в 1 клик */
+.woocommerce ul.products li.product .button {
+  margin-left: 0;
+}
+.woocommerce ul.products li.product .button.awooc-custom-order {
+  background-color: var(--e-global-color-7459a87);
+}
+.woocommerce ul.products li.product .button.awooc-custom-order:hover {
+  background-color: #015e5e;
+}
+.elementor-1173
+  .elementor-element.elementor-element-afcdcaa
+  .wl-addto-cart[class*="wl-style-"]
+  form.cart
+  button {
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .woocommerce-store-notice,
+  p.woocommerce-store-notice.demo_store {
+    width: 100%;
+    border-radius: 0;
+    top: 0;
+  }
+}
+
+/* Страница Отзывы */
+.elementor-widget-container body {
+  background-color: rgb(255, 255, 255) !important;
+  border: none;
+}
+body {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+/* Страница скидок */
+.discounts-section {
+  font-family: sans-serif;
+  background: #f7f9fb;
+  padding: 30px;
+  border-radius: 12px;
+}
+.discounts-section hr {
+  margin-top: 40px;
+  color: rgb(39, 91, 55);
+}
+.discount-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.discount-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 60px;
+  color: white;
+}
+
+.circle.red {
+  background-color: #f44336;
+}
+
+.circle.blue {
+  background-color: #03a9f4;
+}
+
+.vip {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.vip span {
+  display: inline-block;
+  background: #ffeb3b;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.conditions {
+  margin-top: 40px;
+}
+
+.conditions-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 20px;
+}
+
+/* Фильтер товаров */
+.wpc-filters-widget-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.wpc-filters-section {
+  flex: 1 1 200px;
 }
