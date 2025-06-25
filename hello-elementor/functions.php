@@ -496,6 +496,39 @@ function discount_percentage_func(){
 		return ob_get_clean();
 };
 
+// Добавляем облако тэгов
+
+add_action('woocommerce_before_shop_loop', 'upakovych_show_product_tags_cloud', 4);
+
+function upakovych_show_product_tags_cloud() {
+    if (is_product_category()) {
+        global $wp_query;
+
+        // Получим все ID товаров в текущем архиве
+        $product_ids = wp_list_pluck($wp_query->posts, 'ID');
+
+        // Соберем все теги этих товаров
+        $tags = wp_get_object_terms($product_ids, 'product_tag', ['orderby' => 'count', 'order' => 'DESC']);
+
+        if (!empty($tags) && !is_wp_error($tags)) {
+            echo '<div class="product-tags-cloud">';
+            echo '<strong>Теги в этой категории:</strong><br>';
+			echo '<div class="wrap_tags">';
+            foreach ($tags as $tag) {
+                $link = get_term_link($tag);
+                if (!is_wp_error($link)) {
+                    echo '<a href="' . esc_url($link) . '" class="tag-link" style="margin-right: 8px;">' . esc_html($tag->name) . '</a>';
+                }
+            }
+			echo '</div>';
+            echo '</div><hr>';
+        }
+    }
+}
+
+
+
+
 // Добавление филтров на страницы
 
 function script_remove_null_filter(){
@@ -503,7 +536,7 @@ function script_remove_null_filter(){
 	<script>
 		let filterItem = document.querySelectorAll('.wpc-filters-section');
 		filterItem.forEach((element)=>{
-			console.log(element.querySelectorAll('input[value="0"]'))
+			
 			element.querySelectorAll('input[value="0"]').length == 2 ? 
 			element.remove() : null
 		}
@@ -514,6 +547,8 @@ function script_remove_null_filter(){
 	<?php
 
 }
+
+
 
 //  Четерехклапанные коробки
 add_action('woocommerce_before_shop_loop', function() {
@@ -543,6 +578,8 @@ add_action('woocommerce_before_shop_loop', function() {
 		add_action('wp_footer', 'script_remove_null_filter');
     }
 }, 5);
+
+
 
 
 
