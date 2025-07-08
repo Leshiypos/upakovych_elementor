@@ -29,6 +29,7 @@ if ( ! function_exists( 'hello_elementor_setup' ) ) {
 		if ( apply_filters( 'hello_elementor_register_menus', true ) ) {
 			register_nav_menus( [ 'menu-1' => esc_html__( 'Header', 'hello-elementor' ) ] );
 			register_nav_menus( [ 'menu-2' => esc_html__( 'Footer', 'hello-elementor' ) ] );
+			register_nav_menus( [ 'menu-3' => esc_html__( 'Меню каталога', 'hello-elementor' ) ] );
 		}
 
 		if ( apply_filters( 'hello_elementor_post_type_support', true ) ) {
@@ -517,7 +518,7 @@ function upakovych_show_product_tags_cloud() {
             foreach ($tags as $tag) {
                 $link = get_term_link($tag);
                 if (!is_wp_error($link)) {
-                    echo '<a href="' . esc_url($link) . '" class="tag-link" style="margin-right: 8px;">' . esc_html($tag->name) . '</a>';
+                    echo '<a href="' . esc_url($link) . '" class="tag-link" style="margin-right: 8px;">' . esc_html($tag->name) . ' ('.intval($tag->count).')</a>';
                 }
             }
 			echo '</div>';
@@ -579,7 +580,39 @@ add_action('woocommerce_before_shop_loop', function() {
     }
 }, 5);
 
+// Добавляем боковое меню в категори товаров
 
+add_action('woocommerce_shop_loop_header', 'left_menu_sidebar', 9);
+
+function left_menu_sidebar(){
+	if (is_product_category()) {
+	echo '
+	<div class="left_menu_sidebar">';
+	
+	wp_nav_menu( [
+	'theme_location'  => 'menu-3',
+	'menu'            => '',
+	'container'       => 'div',
+	'container_class' => '',
+	'container_id'    => 'sidebar',
+	'menu_class'      => 'menu',
+	'menu_id'         => '',
+	'echo'            => true,
+	'fallback_cb'     => 'wp_page_menu',
+	'before'          => '',
+	'after'           => '',
+	'link_before'     => '',
+	'link_after'      => '',
+	'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+	'depth'           => 0,
+	'walker'          => '',
+] );
+
+	echo '
+	</div>
+	<div class="cont">';
+	}
+}
 
 
 

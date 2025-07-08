@@ -582,13 +582,65 @@ body {
   display: block;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 10px;
-  background-color: rgb(0, 128, 129);
-  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: 1px solid rgb(0, 128, 129);
+  background-color: rgb(253, 255, 251);
+  color: rgb(0, 128, 129);
   transition: all 0.3s;
 }
 
 .product-tags-cloud a:hover {
-  background-color: rgb(0, 107, 107);
+  background-color: rgb(0, 128, 129);
   color: rgb(255, 255, 255);
+}
+
+/* Боковое меню в каталоге */
+.main_content_product {
+  display: flex;
+  gap: 60px;
+}
+.left_menu_sidebar {
+  padding: 10px 0 0 0;
+  flex: 1;
+  font-size: 16px;
+}
+.main_content_product .cont {
+  flex: 5;
+}
+.left_menu_sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.left_menu_sidebar a {
+  color: rgb(118, 118, 118);
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.left_menu_sidebar ul ul {
+  padding-left: 15px;
+}
+.left_menu_sidebar ul ul ul {
+  padding-left: 30px;
+}
+
+.left_menu_sidebar .current-menu-item > a {
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+.left_menu_sidebar ul:first-child > li > a {
+  font-weight: 600;
+  color: rgb(84, 128, 114);
+}
+@media screen and (max-width: 1200px) {
+  .left_menu_sidebar {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .left_menu_sidebar {
+    display: none;
+  }
 }
