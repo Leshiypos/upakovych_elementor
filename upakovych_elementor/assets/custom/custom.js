@@ -60,7 +60,6 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     const phoneInputs = document.querySelectorAll("input[type='tel']");
-    console.log(phoneInputs);
 
     phoneInputs.forEach(function (input) {
       input.addEventListener("input", formatPhone);
@@ -99,24 +98,45 @@ window.addEventListener("load", () => {
   //   7form конец
 
   // Инициализация swiper
-  new Swiper(".related-products-swiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    autoplay: {
-      delay: 3000,
-    },
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
+  if (document.querySelector(".related-products-swiper")) {
+    new Swiper(".related-products-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      autoplay: {
+        delay: 3000,
       },
-      1024: {
-        slidesPerView: 4,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
       },
-    },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButtons = document.querySelectorAll(".toggle-section");
+  toggleButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      let target = e.currentTarget;
+      console.log(target.classList.contains("collapsed"));
+      const section = button.closest(".checkout-section");
+      section.classList.toggle("collapsed");
+    });
+  });
+
+  const floorToggle = document.getElementById("floor_delivery");
+  const floorInput = document.getElementById("floor_input_wrap");
+
+  floorToggle?.addEventListener("change", () => {
+    floorInput.style.display = floorToggle.checked ? "block" : "none";
   });
 });

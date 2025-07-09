@@ -657,3 +657,22 @@ function left_menu_sidebar(){
 // 		echo do_shortcode('[fe_widget id="' . $filters[$slug] . '"]');
 // 	}
 // }, 5);
+
+// Форма доставки
+// отключаем доставку по другому адресу
+add_filter( 'woocommerce_cart_needs_shipping_address', '__return_false' );
+
+add_filter( 'woocommerce_checkout_fields' , 'remove_unwanted_checkout_fields' );
+
+function remove_unwanted_checkout_fields( $fields ) {
+    // Удаление из секции оплаты (billing)
+    unset($fields['billing']['billing_country']);      // Страна/регион
+    unset($fields['billing']['billing_state']);        // Область / район
+    unset($fields['billing']['billing_address_1']);    // Адрес
+    unset($fields['billing']['billing_address_2']);    // Крыло, подъезд, этаж и т.д.
+    unset($fields['billing']['billing_postcode']);     // Почтовый индекс
+    unset($fields['billing']['billing_city']);         // Населённый пункт
+
+    return $fields;
+}
+
