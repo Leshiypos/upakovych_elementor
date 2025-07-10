@@ -579,6 +579,15 @@ body {
   margin-left: auto;
   width: fit-content;
   cursor: pointer;
+  margin-right: 10px;
+  padding: 4px 15px 0 15px;
+  background-color: rgb(84, 128, 114);
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.header_filters:hover {
+  opacity: 0.9;
 }
 .header_filters.not_active svg {
   transform: rotate(90deg);
@@ -1117,5 +1126,83 @@ form.woocommerce-checkout {
 @media screen and (max-width: 1024px) {
   .woocommerce-breadcrumb {
     margin-top: 30px !important;
+  }
+}
+
+/*Каталог главная страница */
+.benefits-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px; /* межстрочный и межколоночный отступ */
+  max-width: 1140px;
+  justify-content: space-around;
+}
+
+.benefit-flex-item {
+  flex: 1 1 200px; /* ширина одного блока, адаптация при уменьшении */
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 200px; /* чтобы красиво переносились */
+  box-sizing: border-box;
+}
+
+.benefit-icon {
+  font-size: 2.1rem;
+  color: #664799;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.benefit-text {
+  font-size: 1.07rem;
+  color: rgb(84, 128, 114);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 750px) {
+  .benefits-flex {
+    gap: 20px 0;
+  }
+  .benefit-flex-item {
+    min-width: 100%;
+    flex-basis: 100%;
+  }
+  .benefit-text {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .elementor-element-458a63d .wl-row {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    margin: 2px;
+  }
+  .elementor-element-458a63d .wl-row .wl-col-3 {
+    max-width: 100%;
+    padding: 0 !important;
+  }
+  .elementor-element-458a63d .wl-row .wl-col-3 .ht-category-wrap-2 {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 10px 5px;
+    align-items: center;
+    margin: 0;
+  }
+  .elementor-element-458a63d .wl-row .wl-col-3 .ht-category-wrap-2::before {
+    content: none !important;
+  }
+  .elementor-element-458a63d .wl-row .wl-col-3 .ht-category-wrap-2 h3::before {
+    content: none !important;
+  }
+  .elementor-element-458a63d .wl-row .wl-col-3 .ht-category-wrap-2 > div {
+    margin: 0;
+    padding: 0;
   }
 }
