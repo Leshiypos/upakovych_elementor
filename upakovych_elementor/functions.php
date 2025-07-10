@@ -556,6 +556,91 @@ function mobile_menu_function(){
 	<?php
 }
 
+// меню каталога
+add_shortcode('mobile_menu_catalog', 'mobile_menu_catalog_func');
+function mobile_menu_catalog_func(){
+	?>
+	<div class="mobile_cotalog_menu">
+		<div class="burger_menu" id="burger_catalog_button">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-burger.svg" style="fill:#fff" alt="burger">
+		</div>
+		<ul id="list_menu_catalog" class="elementor-icon-list-items not_active">
+			<li class="elementor-icon-list-item ">
+							<a href="https://upakovych.ru/katalog-tovarov/">
+
+								<span class="elementor-icon-list-icon">
+			<svg aria-hidden="true" class="e-font-icon-svg e-fas-boxes" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M560 288h-80v96l-32-21.3-32 21.3v-96h-80c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16h224c8.8 0 16-7.2 16-16V304c0-8.8-7.2-16-16-16zm-384-64h224c8.8 0 16-7.2 16-16V16c0-8.8-7.2-16-16-16h-80v96l-32-21.3L256 96V0h-80c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16zm64 64h-80v96l-32-21.3L96 384v-96H16c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16h224c8.8 0 16-7.2 16-16V304c0-8.8-7.2-16-16-16z"></path></svg>						</span>
+						<span class="elementor-icon-list-text">Открыть каталог</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/vozdushno-puzirchataya-plyonka/">
+
+								<span class="elementor-icon-list-icon">
+			<svg aria-hidden="true" class="e-font-icon-svg e-fas-genderless" viewBox="0 0 288 512" xmlns="http://www.w3.org/2000/svg"><path d="M144 176c44.1 0 80 35.9 80 80s-35.9 80-80 80-80-35.9-80-80 35.9-80 80-80m0-64C64.5 112 0 176.5 0 256s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144z"></path></svg>						</span>
+						<span class="elementor-icon-list-text">Воздушно-пузырчатая пленка</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/termоetiketki-samokleiyushchiesya-etiketki/">
+
+								<span class="elementor-icon-list-icon">
+			<svg aria-hidden="true" class="e-font-icon-svg e-far-square" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V86c0-3.3 2.7-6 6-6h340c3.3 0 6 2.7 6 6v340c0 3.3-2.7 6-6 6z"></path></svg>						</span>
+						<span class="elementor-icon-list-text">Термоэтикетки</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/kleykiye-lenty-skotch/">
+
+								<span class="elementor-icon-list-icon">
+			<svg aria-hidden="true" class="e-font-icon-svg e-fas-tape" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 192c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm400 224H380.6c41.5-40.7 67.4-97.3 67.4-160 0-123.7-100.3-224-224-224S0 132.3 0 256s100.3 224 224 224h400c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400-64c-53 0-96-43-96-96s43-96 96-96 96 43 96 96-43 96-96 96z"></path></svg>						</span>
+						<span class="elementor-icon-list-text">Клейкие ленты</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/kuryerskie-pakety-pakety-dlya-marketpleysov/">
+
+								<span class="elementor-icon-list-icon">
+			<i aria-hidden="true" class="icon icon-shopping-bag-2"></i>						</span>
+						<span class="elementor-icon-list-text">Курьерские пакеты</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/streych-plenka/">
+
+								<span class="elementor-icon-list-icon">
+			<svg aria-hidden="true" class="e-font-icon-svg e-fas-scroll" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>						</span>
+						<span class="elementor-icon-list-text">Пленки</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/gofrotary/">
+
+								<span class="elementor-icon-list-icon">
+			<i aria-hidden="true" class="icon icon-dropbox-2"></i>						</span>
+						<span class="elementor-icon-list-text">Коробки, гофротара</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/grippery-zip-lock-pakety-s-zamkom/">
+
+								<span class="elementor-icon-list-icon">
+			<i aria-hidden="true" class="icon icon-online-shopping-cart"></i>						</span>
+						<span class="elementor-icon-list-text">Грипперы</span>
+							</a>
+					</li>
+				<li class="elementor-icon-list-item">
+							<a href="https://upakovych.ru/product-category/pakety-slaydery-s-begunkom/">
+
+								<span class="elementor-icon-list-icon">
+			<i aria-hidden="true" class="icon icon-shopping-bag"></i>						</span>
+						<span class="elementor-icon-list-text">Слайдеры</span>
+							</a>
+					</li>
+		</ul>
+	</div>
+	<?php
+}
 // Добавляем облако тэгов
 
 add_action('woocommerce_before_shop_loop', 'upakovych_show_product_tags_cloud', 4);
@@ -673,7 +758,20 @@ function left_menu_sidebar(){
 	}
 }
 
-
+add_action('woocommerce_before_main_content', 'mobile_menu_in_product_func', 6);
+function mobile_menu_in_product_func(){
+	?>
+	<div class="e-con-inner catalog">
+		<div class="elementor-element elementor-element-676405b elementor-hidden-desktop elementor-widget elementor-widget-shortcode" data-id="676405b" data-element_type="widget" data-widget_type="shortcode.default">
+			<div class="elementor-widget-container">
+	<?php
+	do_shortcode('[mobile_menu_catalog]');
+	?>
+			</div>
+		</div>
+	</div>
+	<?php
+}
 
 
 
@@ -762,3 +860,5 @@ function check_hook(){
 
 
     remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
+
+?>

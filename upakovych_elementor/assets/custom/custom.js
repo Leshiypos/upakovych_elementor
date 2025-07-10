@@ -134,6 +134,21 @@ window.addEventListener("load", () => {
     }
   });
   //   КОНЕЦ Кнопка главного мобильного меню
+
+  //   Кнопка главного мобильного меню
+  let burger_cat_but = document.querySelector("#burger_catalog_button img");
+  let menu_cat_active = document.querySelector("#list_menu_catalog");
+  burger_cat_but.addEventListener("click", () => {
+    menu_cat_active.classList.toggle("not_active");
+    if (menu_cat_active.classList.contains("not_active")) {
+      burger_cat_but.src =
+        "/wp-content/themes/hello-elementor/assets/images/menu-burger.svg";
+    } else {
+      burger_cat_but.src =
+        "/wp-content/themes/hello-elementor/assets/images/cross.svg";
+    }
+  });
+  //   КОНЕЦ Кнопка главного мобильного меню
 });
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButtons = document.querySelectorAll(".toggle-section");

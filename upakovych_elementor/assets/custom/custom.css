@@ -406,7 +406,10 @@ input.wpcf7-submit:hover {
 
 @media (max-width: 1024px) {
   .elementor-2 .elementor-element.elementor-element-c413459 {
-    padding-top: 120px;
+    /* padding-top: 120px; */
+  }
+  .elementor-element-70f84ef {
+    display: none !important;
   }
 }
 @media screen and (min-width: 800px) {
@@ -906,11 +909,11 @@ form.woocommerce-checkout {
   padding: 10px;
 }
 
-.woocommerce {
+/* .woocommerce {
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
 /* Footer */
 .license_footer {
@@ -963,11 +966,12 @@ form.woocommerce-checkout {
   justify-content: center;
   cursor: pointer;
 }
-.burger_menu {
+.header_mobile .burger_menu {
   display: flex;
   flex-direction: column;
 }
-.header_mobile .burger_menu img {
+.header_mobile .burger_menu img,
+.mobile_cotalog_menu .burger_menu img {
   width: 30px;
   height: 30px;
 }
@@ -1040,4 +1044,56 @@ form.woocommerce-checkout {
   width: 20px;
   height: 20px;
   fill: #fff;
+}
+
+/* Мобильное меню каталога */
+.mobile_cotalog_menu {
+  /* margin-top: 25px; */
+}
+.mobile_cotalog_menu .burger_menu img {
+  opacity: 0.6;
+  padding: 4px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mobile_cotalog_menu .elementor-icon-list-items li {
+  font-size: 16px;
+  padding-left: 20px;
+}
+.mobile_cotalog_menu .elementor-icon-list-items li a {
+  text-decoration: none;
+  color: rgb(84, 128, 114);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+.mobile_cotalog_menu .elementor-icon-list-items li a:hover {
+  color: #000;
+}
+
+.mobile_cotalog_menu #list_menu_catalog {
+  height: 370px;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+.mobile_cotalog_menu #list_menu_catalog.not_active {
+  height: 0;
+}
+
+.e-con-inner.catalog {
+  margin: 25px 10px;
+}
+@media screen and (min-width: 701px) {
+  .e-con-inner.catalog {
+    display: none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .woocommerce-breadcrumb {
+    margin-top: 30px !important;
+  }
 }
