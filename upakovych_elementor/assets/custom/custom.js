@@ -135,7 +135,7 @@ window.addEventListener("load", () => {
   });
   //   КОНЕЦ Кнопка главного мобильного меню
 
-  //   Кнопка главного мобильного меню
+  //   Кнопка каталога мобильного меню
   let burger_cat_but = document.querySelector("#burger_catalog_button img");
   let menu_cat_active = document.querySelector("#list_menu_catalog");
   burger_cat_but.addEventListener("click", () => {
@@ -148,7 +148,17 @@ window.addEventListener("load", () => {
         "/wp-content/themes/hello-elementor/assets/images/cross.svg";
     }
   });
-  //   КОНЕЦ Кнопка главного мобильного меню
+  //   КОНЕЦ каталога главного мобильного меню
+
+  //   Кнопка фильтров каталога
+  let filters_but = document.querySelector(".header_filters");
+  let filters = document.querySelector(".filter_catalog_wrap .filters");
+  filters_but.addEventListener("click", () => {
+    console.log("клик");
+    filters.classList.toggle("not_active");
+    filters_but.classList.toggle("not_active");
+  });
+  //   КОНЕЦ фильтров каталога
 });
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButtons = document.querySelectorAll(".toggle-section");

@@ -160,11 +160,6 @@ function yandex_metrika_action(){
 	END;
 }
 
-
-
-
-
-
 add_action( 'wp_enqueue_scripts', 'custom_script' );
 
 function custom_script(){
@@ -674,8 +669,7 @@ function upakovych_show_product_tags_cloud() {
 
 
 
-// Добавление филтров на страницы
-
+// Добавление фильтров на страницы
 function script_remove_null_filter(){
 	?>
 	<script>
@@ -686,14 +680,10 @@ function script_remove_null_filter(){
 			element.remove() : null
 		}
 	)
-
-
 	</script>	
 	<?php
 
 }
-
-
 
 //  Четерехклапанные коробки
 add_action('woocommerce_before_shop_loop', function() {
@@ -719,13 +709,24 @@ add_action('woocommerce_before_shop_loop', function() {
 		'pakety-slaydery-s-begunkom'
 	);
     if (!is_product_category($not_filtred_category)) {
+		?>
+			<div class="filter_catalog_wrap">
+				<div class="header_filters not_active">
+					<h6>Фильтры</h6>
+					<svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 13L1 7L7 1" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+				</div>
+				<div class="filters not_active">
+		<?php
         echo do_shortcode('[fe_widget]');
+		?>
+				</div>
+			</div>
+		<?php
 		add_action('wp_footer', 'script_remove_null_filter');
     }
 }, 5);
 
 // Добавляем боковое меню в категори товаров
-
 add_action('woocommerce_shop_loop_header', 'left_menu_sidebar', 9);
 
 function left_menu_sidebar(){

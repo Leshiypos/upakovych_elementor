@@ -570,7 +570,29 @@ body {
 .wpc-filters-section {
   flex: 1 1 200px;
 }
-
+.header_filters {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-left: auto;
+  width: fit-content;
+  cursor: pointer;
+}
+.header_filters.not_active svg {
+  transform: rotate(90deg);
+}
+.header_filters svg {
+  transform: rotate(-90deg);
+  transition: all 0.2s;
+}
+.filter_catalog_wrap .filters {
+  overflow: hidden;
+}
+.filter_catalog_wrap .filters.not_active {
+  height: 0;
+}
 /* Облако тэгов категории продуктов */
 .product-tags-cloud .wrap_tags {
   display: flex;
