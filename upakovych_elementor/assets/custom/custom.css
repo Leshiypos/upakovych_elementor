@@ -1206,3 +1206,27 @@ form.woocommerce-checkout {
     padding: 0;
   }
 }
+
+/* Корзина меню */
+.header-icon-cart {
+  position: relative;
+  display: block;
+  height: 35px;
+  width: 35px;
+}
+.header-icon-cart .count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: block;
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgb(249, 0, 0);
+  color: rgb(255, 255, 255);
+}
+.header-icon-cart .no-items {
+  display: none;
+}
