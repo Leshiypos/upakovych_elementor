@@ -8,7 +8,64 @@
 .elementor-1173 .elementor-element.elementor-element-fe682f3 {
   max-width: 1140px;
 }
+/* Футер  - адаптивность дескопного меню */
 
+@media screen and (max-width: 1450px) {
+  .elementor-element-12a8c2c a {
+    gap: 10px !important;
+    border-radius: 5px;
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+  .elementor-element-515b946 nav a {
+    font-size: 14px !important;
+    gap: 10px;
+    padding: 10px !important;
+  }
+  .elementor-element-1eabfb5 svg,
+  .elementor-element-1eabfb5 .elementor-icon i:before {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+  }
+  .elementor-element-1eabfb5 .elementor-icon i,
+  .elementor-element-1eabfb5 .header-icon-cart,
+  .elementor-element-5ecc536 {
+    width: 25px;
+    height: 25px;
+  }
+  .elementor-element-1eabfb5 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px !important;
+  }
+  .elementor-44 .elementor-element.elementor-element-1eabfb5 {
+    width: fit-content !important;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .elementor-element-12a8c2c a {
+    border-radius: 3px;
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+  .elementor-element-515b946 nav a {
+    font-size: 12px !important;
+  }
+  .elementor-element-1eabfb5 svg,
+  .elementor-element-1eabfb5 .elementor-icon i:before {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+  .elementor-element-1eabfb5 .elementor-icon i,
+  .elementor-element-1eabfb5 .header-icon-cart,
+  .elementor-element-5ecc536 {
+    width: 20px;
+    height: 20px;
+  }
+}
 /* Реакция элементов на наведение мышью - ФУТЕР */
 
 footer .elementor-widget-container span a:hover {
