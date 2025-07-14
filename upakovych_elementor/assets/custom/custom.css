@@ -1128,6 +1128,82 @@ form.woocommerce-checkout {
     margin-top: 30px !important;
   }
 }
+/* Футер - мобильный */
+
+@media screen and (max-width: 768px) {
+  .elementor-element-df8445d {
+    padding: 10px !important;
+  }
+  .elementor-element-df8445d * {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
+  .elementor-element-df8445d .elementor-element-1c4eaa8 img {
+    height: 30px !important;
+  }
+  .elementor-element-447baa1 > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: fit-content;
+  }
+  .elementor-element-72ed696 {
+    flex-direction: row !important;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .elementor-element-72ed696 > div {
+    flex: 1 1 250px;
+  }
+  .wp-image-3471 {
+    width: 21px !important;
+    height: 30px !important;
+  }
+  .elementor-element-1c4eaa8,
+  .elementor-element-447baa1 {
+    max-width: fit-content !important;
+    align-self: flex-start !important;
+  }
+  .elementor-element-447baa1 {
+    display: none;
+  }
+  .elementor-element-1c2bed5 span {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    font-size: 14px;
+    align-items: space-around;
+    gap: 10px;
+  }
+  .elementor-element-6f31de1 a {
+  }
+  .elementor-element-1c2bed5 span > a {
+    flex: 1;
+    font-size: 14px;
+  }
+  .elementor-element-d819d27 {
+    flex-wrap: nowrap;
+  }
+  .elementor-element-d819d27 svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .elementor-element-488fac5 .e-con-inner {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .elementor-element-488fac5 .elementor-widget-container {
+    width: 150px;
+  }
+  .elementor-element-e888190 {
+    flex-direction: column-reverse !important;
+  }
+  .elementor-element-6f31de1 .footer_info {
+    margin-top: 20px;
+  }
+}
 
 /*Каталог главная страница */
 .benefits-flex {
@@ -1229,4 +1305,10 @@ form.woocommerce-checkout {
 }
 .header-icon-cart .no-items {
   display: none;
+}
+
+/* Карточки товаров */
+.price > .predicate {
+  color: #c36;
+  font-weight: 600;
 }
