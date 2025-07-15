@@ -418,7 +418,7 @@ function ea_related_products_swiper() {
     if ( ! $loop->have_posts() ) return '';
 
     ob_start(); ?>
-
+	<h2>Рекомендуемые товары</h2>
     <div class="swiper-container related-products-swiper">
         <div class="swiper-wrapper">
             <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
@@ -450,6 +450,44 @@ function ea_related_products_swiper() {
     return ob_get_clean();
 }
 add_shortcode( 'ea_related_by_cat', 'ea_related_products_swiper' ); //Рабочий шорткод [ea_related_by_cat]
+
+// Сопутствуюие товары
+
+function sc_crassels_products_carusel_func(){
+	
+global $product;
+
+$cross_sell_ids = array_unique( $product->get_cross_sell_ids() );
+
+if ( $cross_sell_ids ) {
+    ?>
+    <h2>Сопутствующие товары</h2>
+
+    <div class="swiper cross-sells-slider">
+        <div class="swiper-wrapper">
+            <?php
+            foreach ( $cross_sell_ids as $cross_id ) {
+                $post_object = get_post( $cross_id );
+                setup_postdata( $GLOBALS['post'] =& $post_object );
+                ?>
+                <div class="swiper-slide">
+                    <?php wc_get_template_part( 'content', 'product' ); ?>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+
+    </div>
+
+    <?php
+    wp_reset_postdata();
+}
+}
+add_shortcode('crassels_products_carusel', 'sc_crassels_products_carusel_func');
+
+
+
 
 // Shortcode for discount percentage
 
@@ -504,6 +542,19 @@ function mobile_menu_function(){
 			<div class="logo_mobile">
 				<a href="/"><img src="/wp-content/uploads/2024/02/МИ-e1739461999196.png" alt="Логотип сайта" />Упаковыч</a>  
 			</div>
+				<!-- Иконки -->
+			 
+			<ul class="always_display_mobile_icons">
+				<li><?php echo do_shortcode('[favotite_page_link]'); ?>	</li>
+				<li><a class="" href="#request_call"><span class="elementor-screen-only">Icon-phone-call</span><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="512" height="512"><path d="M13,1a1,1,0,0,1,1-1A10.011,10.011,0,0,1,24,10a1,1,0,0,1-2,0,8.009,8.009,0,0,0-8-8A1,1,0,0,1,13,1Zm1,5a4,4,0,0,1,4,4,1,1,0,0,0,2,0,6.006,6.006,0,0,0-6-6,1,1,0,0,0,0,2Zm9.093,10.739a3.1,3.1,0,0,1,0,4.378l-.91,1.049c-8.19,7.841-28.12-12.084-20.4-20.3l1.15-1A3.081,3.081,0,0,1,7.26.906c.031.031,1.884,2.438,1.884,2.438a3.1,3.1,0,0,1-.007,4.282L7.979,9.082a12.781,12.781,0,0,0,6.931,6.945l1.465-1.165a3.1,3.1,0,0,1,4.281-.006S23.062,16.708,23.093,16.739Zm-1.376,1.454s-2.393-1.841-2.424-1.872a1.1,1.1,0,0,0-1.549,0c-.027.028-2.044,1.635-2.044,1.635a1,1,0,0,1-.979.152A15.009,15.009,0,0,1,5.9,9.3a1,1,0,0,1,.145-1S7.652,6.282,7.679,6.256a1.1,1.1,0,0,0,0-1.549c-.031-.03-1.872-2.425-1.872-2.425a1.1,1.1,0,0,0-1.51.039l-1.15,1C-2.495,10.105,14.776,26.418,20.721,20.8l.911-1.05A1.121,1.121,0,0,0,21.717,18.193Z"/></svg></a></li>
+				<li>	
+					<a class="cart-quantity header-icon-cart" href="/cart/">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/shopping-cart.svg" alt="">
+						<span class="count<?php echo ($count === 0)?" no-items": ""; ?>"><?php echo !($count === 0)?$count: ""; ?></span>
+					</a>
+				</li>
+			</ul>
+	<!-- Конец Иконки -->
 			<div class="burger_menu" id="burger_button">
 				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-burger-white.svg" style="fill:#fff" alt="burger">
 			</div>
@@ -663,6 +714,14 @@ function custom_ajax_cart_count_fragment( $fragments ) {
     $fragments['.cart-quantity .count'] = ob_get_clean();
     return $fragments;
 }
+
+// добавляем кнопку ссылки на страницу избранное
+function favotite_page_link_funk(){
+	echo '<div class="fovorite_link_page">';
+	echo do_shortcode('[ti_wishlist_products_counter]');
+	echo '</div>';
+}
+add_shortcode('favotite_page_link', 'favotite_page_link_funk');
 
 
 // Добавляем облако тэгов

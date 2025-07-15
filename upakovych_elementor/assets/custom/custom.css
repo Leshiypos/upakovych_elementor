@@ -28,6 +28,12 @@
     height: 25px;
     font-size: 25px;
   }
+  .fovorite_link_page a::before {
+    font-size: 28px !important;
+  }
+  .fovorite_link_page .wishlist_products_counter_number {
+    font-size: 10px;
+  }
   .elementor-element-1eabfb5 .elementor-icon i,
   .elementor-element-1eabfb5 .header-icon-cart,
   .elementor-element-5ecc536 {
@@ -431,7 +437,11 @@ input.wpcf7-submit:hover {
   overflow: hidden;
   margin-bottom: 40px;
 }
-.related-products-swiper .product-card {
+.related-products-swiper .product-card,
+.cross-sells-slider .product {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
   background: #f5f7fc;
   border-radius: 20px;
   padding: 15px;
@@ -443,7 +453,25 @@ input.wpcf7-submit:hover {
   height: auto;
   border-radius: 10px;
 }
-.related-products-swiper .product-info h2 {
+.related-products-swiper .product-info button,
+.cross-sells-slider button {
+  margin: 0 !important;
+  background-color: rgb(84, 128, 114) !important;
+}
+.related-products-swiper .product-info button:hover,
+.cross-sells-slider button:hover {
+  background-color: rgba(84, 128, 114, 0.9) !important;
+}
+
+.related-products-swiper .product-info {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  align-self: center;
+}
+
+.related-products-swiper .product-info h2,
+.cross-sells-slider h2 {
   font-size: 18px;
   font-weight: 600;
   color: #007d7b;
@@ -1094,6 +1122,7 @@ form.woocommerce-checkout {
   transition: opacity 0.2s ease 0.2s;
   margin: 0;
   padding: 10px;
+  z-index: 10000;
 }
 
 .mobile_menu_list .mobile_menu_link a {
@@ -1101,7 +1130,7 @@ form.woocommerce-checkout {
   font-size: 20px;
   color: #fff;
   width: 100%;
-  padding: 15px 0;
+  padding: 5px 0;
   padding-right: 30px;
   text-align: right;
 }
@@ -1133,10 +1162,29 @@ form.woocommerce-checkout {
   height: 20px;
   fill: #fff;
 }
-
+.header_mobile .always_display_mobile_icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  fill: #fff;
+  margin-left: auto;
+  margin-right: 20px;
+  transition: opacity 0.2s;
+}
+.header_mobile .always_display_mobile_icons svg,
+.header_mobile .always_display_mobile_icons img {
+  width: 25px;
+  height: 25px;
+}
+.header_mobile .always_display_mobile_icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Мобильное меню каталога */
 .mobile_cotalog_menu {
-  /* margin-top: 25px; */
+  position: relative;
 }
 .mobile_cotalog_menu .burger_menu img {
   opacity: 0.6;
@@ -1164,9 +1212,16 @@ form.woocommerce-checkout {
 }
 
 .mobile_cotalog_menu #list_menu_catalog {
+  position: absolute;
+  top: 50px;
+  left: -10px;
   height: 370px;
   transition: all 0.2s;
   overflow: hidden;
+  background-color: #fff;
+  z-index: 200;
+  padding-left: 10px;
+  width: 400px;
 }
 .mobile_cotalog_menu #list_menu_catalog.not_active {
   height: 0;
@@ -1368,4 +1423,72 @@ form.woocommerce-checkout {
 .price > .predicate {
   color: #c36;
   font-weight: 600;
+}
+.woocommerce-LoopProduct-link .woocommerce-Price-amount {
+  font-size: 18px !important;
+}
+
+/* Траница категории продуктов */
+ul.products .product-category {
+  /* border: 2px solid rgb(0, 128, 129); */
+  border-radius: 20px;
+  padding: 20px !important;
+  background-color: rgb(84, 128, 114);
+  color: rgb(255, 255, 255) !important;
+  min-height: 280px;
+}
+ul.products .product-category img {
+  border-radius: 10px;
+}
+ul.products .product-category a,
+ul.products .product-category .count {
+  color: rgb(255, 255, 255) !important;
+}
+main {
+  margin-top: 20px;
+}
+.metform-form-content .elementor-element-5d4f4c1 {
+  background-color: rgb(255, 255, 255);
+}
+
+#content h1:first-child {
+  margin-top: 50px !important;
+}
+@media screen and (max-width: 750px) {
+  #content h1:first-child {
+    margin-top: 25px !important;
+  }
+}
+
+/* список желаний */
+
+.tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt,
+.tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt {
+  width: 30px !important;
+  height: 30px !important;
+}
+.tinv-wishlist
+  .tinvwl_add_to_wishlist_button.tinvwl-icon-heart-plus.no-txt:before,
+.tinv-wishlist .tinvwl_add_to_wishlist_button.tinvwl-icon-heart.no-txt:before {
+  font-size: 30px;
+}
+
+.fovorite_link_page {
+  width: 35px;
+  height: 35px;
+  position: relative;
+}
+.fovorite_link_page .wishlist_products_counter_number {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: rgb(255, 255, 255);
+  font-size: 10px;
+}
+.fovorite_link_page a {
+  width: 35px;
+  height: 35px;
+}
+.fovorite_link_page a::before {
+  font-size: 40px !important;
 }

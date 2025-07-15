@@ -120,17 +120,43 @@ window.addEventListener("load", () => {
       },
     });
   }
+  if (document.querySelector(".cross-sells-slider")) {
+    new Swiper(".cross-sells-slider", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      autoplay: {
+        delay: 3000,
+      },
+      loop: false,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  }
+
   //   Кнопка главного мобильного меню
   let burger_but = document.querySelector("#burger_button img");
   let menu_active = document.querySelector(".header_mobile .mobile_menu_list");
   burger_but.addEventListener("click", () => {
+    let icons_header = document.querySelector(".always_display_mobile_icons");
     menu_active.classList.toggle("not_active");
     if (menu_active.classList.contains("not_active")) {
       burger_but.src =
         "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg";
+      icons_header.style.opacity = 1;
     } else {
       burger_but.src =
         "/wp-content/themes/hello-elementor/assets/images/cross-white.svg";
+      icons_header.style.opacity = 0;
     }
   });
   //   КОНЕЦ Кнопка главного мобильного меню
@@ -153,11 +179,13 @@ window.addEventListener("load", () => {
   //   Кнопка фильтров каталога
   let filters_but = document.querySelector(".header_filters");
   let filters = document.querySelector(".filter_catalog_wrap .filters");
-  filters_but.addEventListener("click", () => {
-    console.log("клик");
-    filters.classList.toggle("not_active");
-    filters_but.classList.toggle("not_active");
-  });
+  if (filters) {
+    filters_but.addEventListener("click", () => {
+      console.log("клик");
+      filters.classList.toggle("not_active");
+      filters_but.classList.toggle("not_active");
+    });
+  }
   //   КОНЕЦ фильтров каталога
 });
 document.addEventListener("DOMContentLoaded", () => {
