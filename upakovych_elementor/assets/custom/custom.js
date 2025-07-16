@@ -146,6 +146,7 @@ window.addEventListener("load", () => {
   //   Кнопка главного мобильного меню
   let burger_but = document.querySelector("#burger_button img");
   let menu_active = document.querySelector(".header_mobile .mobile_menu_list");
+  //   menu_active.classList.add("not_active");
   burger_but.addEventListener("click", () => {
     let icons_header = document.querySelector(".always_display_mobile_icons");
     menu_active.classList.toggle("not_active");

@@ -561,6 +561,7 @@ function mobile_menu_function(){
 		</div>
 
 		<div class="mobile_menu_list not_active">
+			<div class="wrap_list">
 
 	<?php wp_nav_menu([
 		'menu' => 103,
@@ -602,6 +603,7 @@ function mobile_menu_function(){
 		</li>
 		</ul>
 	<!-- Конец Иконки -->
+		</div>
 	</div>
 
 	</div>
