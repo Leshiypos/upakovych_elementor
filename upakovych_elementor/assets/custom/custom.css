@@ -1111,7 +1111,7 @@ form.woocommerce-checkout {
 
 .mobile_menu_list {
   position: absolute;
-  top: 60px;
+  top: 55px;
   right: 0px;
   max-width: 300px;
   overflow: hidden;
@@ -1166,6 +1166,7 @@ form.woocommerce-checkout {
   text-align: center;
   background-color: rgb(186, 207, 40);
   border-radius: 10px;
+  font-size: 13px;
 }
 .header_mobile .contacts .point {
   width: 20px;
@@ -1180,7 +1181,7 @@ form.woocommerce-checkout {
   fill: #fff;
   margin-left: auto;
   margin-right: 20px;
-  transition: opacity 0.2s;
+  transition: opacity 0.5s;
 }
 .header_mobile .always_display_mobile_icons svg,
 .header_mobile .always_display_mobile_icons img {
