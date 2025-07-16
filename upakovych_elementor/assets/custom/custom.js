@@ -146,10 +146,13 @@ window.addEventListener("load", () => {
   //   Кнопка главного мобильного меню
   let burger_but = document.querySelector("#burger_button img");
   let menu_active = document.querySelector(".header_mobile .mobile_menu_list");
+  let menu_cat_active = document.querySelector(".wrap_menu_catalog");
+
   //   menu_active.classList.add("not_active");
   burger_but.addEventListener("click", () => {
     let icons_header = document.querySelector(".always_display_mobile_icons");
     menu_active.classList.toggle("not_active");
+    menu_cat_active.classList.remove("active");
     if (menu_active.classList.contains("not_active")) {
       burger_but.src =
         "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg";
@@ -164,17 +167,40 @@ window.addEventListener("load", () => {
 
   //   Кнопка каталога мобильного меню
   let burger_cat_but = document.querySelector("#burger_catalog_button img");
-  let menu_cat_active = document.querySelector("#list_menu_catalog");
+
   burger_cat_but.addEventListener("click", () => {
-    menu_cat_active.classList.toggle("not_active");
-    if (menu_cat_active.classList.contains("not_active")) {
-      burger_cat_but.src =
-        "/wp-content/themes/hello-elementor/assets/images/menu-burger.svg";
-    } else {
+    menu_active.classList.add("not_active");
+    menu_cat_active.classList.toggle("active");
+    if (menu_cat_active.classList.contains("active")) {
       burger_cat_but.src =
         "/wp-content/themes/hello-elementor/assets/images/cross.svg";
+    } else {
+      burger_cat_but.src =
+        "/wp-content/themes/hello-elementor/assets/images/menu-burger.svg ";
     }
   });
+
+  //   выпадающие списки
+  let itemsMenuCatalog = document.querySelectorAll("#list_menu_catalog>li>a");
+
+  itemsMenuCatalog.forEach((item) => {
+    if (!item.nextElementSibling) {
+      item.classList.add("no-icon");
+    }
+  });
+  itemsMenuCatalog.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      if (e.target.nextElementSibling) {
+        e.preventDefault();
+      }
+      itemsMenuCatalog.forEach((item) => {
+        let elem = item.closest("li");
+        if (elem.classList.contains("open")) elem.classList.remove("open");
+      });
+      e.target.closest("li").classList.toggle("open");
+    });
+  });
+
   //   КОНЕЦ каталога главного мобильного меню
 
   //   Кнопка фильтров каталога
