@@ -147,11 +147,14 @@ window.addEventListener("load", () => {
   let burger_but = document.querySelector("#burger_button img");
   let menu_active = document.querySelector(".header_mobile .mobile_menu_list");
   let menu_cat_active = document.querySelector(".wrap_menu_catalog");
+  let burger_cat_but = document.querySelector("#burger_catalog_button img");
 
   //   menu_active.classList.add("not_active");
   burger_but.addEventListener("click", () => {
     let icons_header = document.querySelector(".always_display_mobile_icons");
     menu_active.classList.toggle("not_active");
+    burger_cat_but.src =
+      "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg ";
     menu_cat_active.classList.remove("active");
     if (menu_active.classList.contains("not_active")) {
       burger_but.src =
@@ -166,18 +169,27 @@ window.addEventListener("load", () => {
   //   КОНЕЦ Кнопка главного мобильного меню
 
   //   Кнопка каталога мобильного меню
-  let burger_cat_but = document.querySelector("#burger_catalog_button img");
 
   burger_cat_but.addEventListener("click", () => {
     menu_active.classList.add("not_active");
     menu_cat_active.classList.toggle("active");
+    burger_but.src =
+      "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg";
     if (menu_cat_active.classList.contains("active")) {
       burger_cat_but.src =
-        "/wp-content/themes/hello-elementor/assets/images/cross.svg";
+        "/wp-content/themes/hello-elementor/assets/images/cross-white.svg";
     } else {
       burger_cat_but.src =
-        "/wp-content/themes/hello-elementor/assets/images/menu-burger.svg ";
+        "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg ";
     }
+  });
+  let burger_cat_but_cross = document.querySelector(
+    "#burger_catalog_button_cross"
+  );
+  burger_cat_but_cross.addEventListener("click", () => {
+    menu_cat_active.classList.remove("active");
+    burger_cat_but.src =
+      "/wp-content/themes/hello-elementor/assets/images/menu-burger-white.svg ";
   });
 
   //   выпадающие списки
@@ -193,11 +205,16 @@ window.addEventListener("load", () => {
       if (e.target.nextElementSibling) {
         e.preventDefault();
       }
+      const li = e.target.closest("li");
+      const isOpen = li.classList.contains("open");
+      // Закрыть все пункты
       itemsMenuCatalog.forEach((item) => {
-        let elem = item.closest("li");
-        if (elem.classList.contains("open")) elem.classList.remove("open");
+        item.closest("li").classList.remove("open");
       });
-      e.target.closest("li").classList.toggle("open");
+      // Если был закрыт — открыть, если был открыт — не открывать заново
+      if (!isOpen) {
+        li.classList.add("open");
+      }
     });
   });
 

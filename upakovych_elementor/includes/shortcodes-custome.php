@@ -225,10 +225,11 @@ function mobile_menu_catalog_func(){
 	?>
 	<div class="mobile_cotalog_menu">
 		<div class="burger_menu" id="burger_catalog_button">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-burger.svg" style="fill:#fff" alt="burger">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu-burger-white.svg" alt="burger">
 		</div>
 			<div class="wrap_menu_catalog">
 				<ul id="list_menu_catalog">
+					<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/cross-white.svg" id="burger_catalog_button_cross" alt="burger"></li>
 				<?php 
 					wp_nav_menu( [
 					'theme_location'  => 'menu-3',

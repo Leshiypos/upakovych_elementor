@@ -521,7 +521,7 @@ add_action('woocommerce_before_main_content', 'mobile_menu_in_product_func', 6);
 function mobile_menu_in_product_func(){
 	?>
 	<div class="e-con-inner catalog">
-		<div class="elementor-element elementor-element-676405b elementor-hidden-desktop elementor-widget elementor-widget-shortcode elementor-sticky">
+		<div class="elementor-element elementor-element-676405b elementor-hidden-desktop elementor-widget elementor-widget-shortcode elementor-sticky" data-id="676405b" data-element_type="widget" data-settings="{&quot;sticky&quot;:&quot;top&quot;,&quot;sticky_offset&quot;:75,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_effects_offset&quot;:0}" data-widget_type="shortcode.default">
 			<div class="elementor-widget-container">
 	<?php
 	do_shortcode('[mobile_menu_catalog]');
