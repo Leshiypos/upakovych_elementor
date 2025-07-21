@@ -309,3 +309,53 @@ function form_of_intended_use_func(){
 </div>
 	<?php
 }
+
+// Описание продукта с выводом данных кастомных полей на странице товара
+
+add_shortcode('description_short_code', 'description_short_code_func');
+
+function description_short_code_func(){
+	$urls_slugs = [
+		"Ширина, м" => "width.svg",
+		"Ширина, см" => "width.svg",
+		"Ширина, мм" => "width.svg",
+		"Ширина" => "width.svg",
+		"Длина, м" => "dimensions.svg",
+		"Длина" => "dimensions.svg",
+		"Высота" => "dimensions.svg",
+		"Высота, см" => "dimensions.svg",
+		"Высота, мм" => "dimensions.svg",
+		"Толщина, мкм" => "line-width.svg",
+		"Объём" => "volume.svg",
+		"Вес, кг" => "weight.svg",
+		"Плотность, гр" => "size.svg",
+		"Цвет" => "palette.svg",
+		"Штук в рулоне" => "sushi.svg",
+		"По умолчанию" => "volume.svg",
+
+	];
+	global $post;
+	$fields = get_field_objects($post->ID);
+?>
+	<div class="characteristics">
+		<h6>Характеристики</h6>
+		<div class="wrap_charact">
+
+		
+		<?php
+		if ($fields) {
+			foreach ($fields as $field) {
+				$label = $field['label'];
+				?>
+				<div>
+					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/dimensions_icon/<?php echo $urls_slugs[$label] ? $urls_slugs[$label] : $urls_slugs['По умолчанию'];?>" title=""/>
+					<span><?php echo esc_html($field['label']); ?>: </span> <?php  echo esc_html($field['value']); ?>
+				</div>
+				<?php
+			}
+		}
+		?>
+		</div>
+	</div>
+	<?php
+}
