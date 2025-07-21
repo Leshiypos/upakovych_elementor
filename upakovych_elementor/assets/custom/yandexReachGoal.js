@@ -80,6 +80,13 @@ window.addEventListener("load", () => {
       if (event.detail.contactFormId == "6756") {
         ym(100712159, "reachGoal", "kupit_1_klick");
       }
+      if (event.detail.contactFormId == "8516") {
+        ym(100712159, "reachGoal", "popup_send");
+        // закрываем форму после отправки
+        setTimeout(() => {
+          document.querySelector("#popmake-8507 .popmake-close").click();
+        }, 5000);
+      }
     },
     false
   );
@@ -114,4 +121,6 @@ window.addEventListener("load", () => {
   observeMetformSuccess("metform-wrap-291ed67b-314", () => {
     ym(100712159, "reachGoal", "zayavka_sent");
   });
+
+  //   Отправка PopUp Хочу дешевле
 });
