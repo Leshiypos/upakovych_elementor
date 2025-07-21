@@ -477,7 +477,13 @@ input.wpcf7-submit:hover {
   color: #007d7b;
   margin: 10px 0;
 }
-
+.cross-sells-slider button {
+  margin-top: 5px !important;
+  width: 100%;
+}
+.cross-sells-slider .product_type_simple {
+  width: 100%;
+}
 @media screen and (min-width: 1000px) {
   #main_form {
     min-width: 190px !important;
@@ -532,6 +538,12 @@ p.woocommerce-store-notice.demo_store {
 /* Кнопка Купить в 1 клик */
 .woocommerce ul.products li.product .button {
   margin-left: 0;
+}
+.archive.tax-product_cat ul.products > li,
+ul.products > li {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
 }
 .woocommerce ul.products li.product .button.awooc-custom-order {
   background-color: var(--e-global-color-7459a87);
@@ -1257,7 +1269,6 @@ form.woocommerce-checkout {
   color: rgb(84, 128, 114);
   background-color: #008081;
   border-radius: 0 0 10px 0;
-  max-height: 180vw;
   overflow: auto;
 }
 .mobile_cotalog_menu #list_menu_catalog > li:first-child {
@@ -1713,3 +1724,63 @@ main {
     font-size: 18px !important;
   }
 }
+
+/* Форма целевого назначения intended use */
+.intended_use {
+  position: relative;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #008081;
+  max-width: 900px;
+  margin: 5px;
+}
+.intended_use .wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.intended_use .wrap > div:first-child {
+  flex-direction: 2 2 160px;
+}
+.intended_use .wrap > div:last-child {
+  flex-direction: 1 1 80px;
+}
+.intended_use .popup-policy {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.intended_use img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+#popmake-8507 > button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+#popmake-8507 > button:hover {
+  color: red !important;
+  transition: color 0.2s;
+}
+.intended_use .form input {
+  margin-bottom: 10px;
+}
+.intended_use .wpcf7-response-output {
+  margin: 0 !important;
+  margin-top: 10px !important;
+}
+.elementor-element-8c13d51 {
+  width: 100% !important;
+}
+@media screen and (max-width: 850px) {
+  .intended_use .wrap {
+    flex-direction: column;
+  }
+}
+
+/* Сопутствующие товары */

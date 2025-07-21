@@ -65,6 +65,9 @@ add_shortcode( 'ea_related_by_cat', 'ea_related_products_swiper' ); //Рабоч
 function sc_crassels_products_carusel_func(){
 	
 global $product;
+if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+    return '<!-- product not found -->';
+}
 
 $cross_sell_ids = array_unique( $product->get_cross_sell_ids() );
 
@@ -284,3 +287,25 @@ function favotite_page_link_funk(){
 	echo '</div>';
 }
 add_shortcode('favotite_page_link', 'favotite_page_link_funk');
+
+
+// Форма целевого назначения
+
+add_shortcode('form_of_intended_use', 'form_of_intended_use_func');
+
+function form_of_intended_use_func(){
+	?>
+
+<div class="intended_use">
+	<h2>Товары от производителя</h2>
+	<div class="wrap">
+		<div>
+			<img src="/wp-content/uploads/2025/07/fon_popUp.png" alt="">
+		</div>
+		<div class="form">	
+			<?php echo do_shortcode( '[contact-form-7 id="6dfff09" title="Форма целевого действия"]' ); ?>
+		</div>
+	</div>
+</div>
+	<?php
+}
