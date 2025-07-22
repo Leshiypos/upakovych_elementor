@@ -388,6 +388,44 @@ td {
     max-width: 100% !important;
   }
 }
+/* стандартная форма */
+#popmake-8657,
+#popmake-8677 {
+  max-width: 400px !important;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #008081;
+  margin: 5px;
+}
+#popmake-8657 .pum-close.popmake-close,
+#popmake-8677 .pum-close.popmake-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#popmake-8657 .pum-close.popmake-close:hover,
+#popmake-8677 .pum-close.popmake-close:hover {
+  color: red !important;
+  transition: color 0.2s;
+}
+#popmake-8657 input,
+#popmake-8677 input {
+  margin-bottom: 10px;
+}
+
+#popmake-8657 .popup-policy,
+#popmake-8677 .popup-policy {
+  font-size: 10px;
+  opacity: 0.7;
+}
+@media screen and (max-width: 400px) {
+  #popmake-8657,
+  #popmake-8677 {
+    max-width: 100% !important;
+  }
+}
 
 @media screen and (max-width: 500px) {
   .elementor-2
@@ -1835,6 +1873,16 @@ main {
   border-bottom: 2px solid rgb(84, 128, 114);
   width: fit-content;
 }
+.single-product .delivery_block .description {
+  margin-top: 10px;
+}
+.single-product .delivery_block .description p {
+  margin-bottom: 5px;
+}
+.single-product .delivery_block .description strong {
+  color: rgb(188, 209, 40);
+  font-weight: 400;
+}
 .single-product .characteristics h6 {
   margin-bottom: 8px !important;
 }
@@ -1846,6 +1894,11 @@ main {
   justify-content: flex-start;
   gap: 30px;
 }
+.single-product .characteristics .wrap_charact img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
 .single-product .characteristics .wrap_charact > div {
   display: flex;
   flex-direction: row;
@@ -1856,4 +1909,79 @@ main {
 }
 .woocommerce-notices-wrapper {
   margin-top: 20px !important;
+}
+
+.single-product .delivery-payment-site {
+  max-width: 100%;
+}
+.single-product .site-section-title {
+  font-weight: 700;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.single-product .site-section-title .site-link {
+  font-weight: 600;
+  margin-left: 7px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.single-product .site-delivery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 34px 0;
+  border-top: 1px solid #cde3dd;
+}
+.single-product .site-delivery-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid #cde3dd;
+  font-size: 1.13rem;
+  font-weight: 500;
+  position: relative;
+}
+.single-product .site-price {
+  font-weight: 700;
+  font-size: 1.11rem;
+  min-width: 84px;
+  text-align: right;
+  letter-spacing: 0.3px;
+}
+.single-product .site-price--free {
+  color: rgb(188, 209, 40);
+}
+.single-product .site-subtext {
+  display: block;
+  font-size: 0.96rem;
+  opacity: 0.6;
+  font-weight: 400;
+  margin-top: 2px;
+}
+.single-product .site-delivery-list a {
+  text-decoration: underline dotted;
+  font-weight: 500;
+}
+.single-product .site-section-title--payment {
+  font-size: 1.5rem;
+  margin-top: 34px;
+  margin-bottom: 16px;
+}
+.single-product .site-payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+}
+.single-product .site-payment-method {
+  flex: 1;
+}
+.elementor-element-704661c .e-n-tabs-content > div {
+  margin: 32px auto 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(44, 62, 80, 0.08);
+  padding: 28px 28px 18px 28px;
 }

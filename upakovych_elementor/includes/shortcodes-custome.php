@@ -310,6 +310,41 @@ function form_of_intended_use_func(){
 	<?php
 }
 
+//форма Нашли дешевле? 
+add_shortcode('form_found_it_cheaper', 'form_found_it_cheaper_func');
+
+function form_found_it_cheaper_func(){
+	?>
+
+<div class="standart_form">
+	<h2>Нашли дешевле? Мы вам перезвоним</h2>
+	<div class="wrap">
+		<div class="form">	
+			<?php echo do_shortcode( '[contact-form-7 id="2d72a73" title="Форма Нашли дешевле?"]' ); ?>
+		</div>
+	</div>
+</div>
+	<?php
+} 
+
+//форма Запрос цены на опт? 
+add_shortcode('form_wholesale_price', 'form_wholesale_price_func');
+
+function form_wholesale_price_func(){
+	?>
+
+<div class="standart_form">
+	<h2>Запрос цены на опт</h2>
+	<div class="wrap">
+		<div class="form">	
+			<?php echo do_shortcode( '[contact-form-7 id="dff5267" title="Форма Запрос цены на опт"]' ); ?>
+		</div>
+	</div>
+</div>
+	<?php
+} 
+
+
 // Описание продукта с выводом данных кастомных полей на странице товара
 
 add_shortcode('description_short_code', 'description_short_code_func');
@@ -337,25 +372,31 @@ function description_short_code_func(){
 	global $post;
 	$fields = get_field_objects($post->ID);
 ?>
-	<div class="characteristics">
-		<h6>Характеристики</h6>
-		<div class="wrap_charact">
 
-		
-		<?php
+
+<?php
 		if ($fields) {
+			?>
+			<div class="characteristics">
+				<h6>Характеристики</h6>
+				<div class="wrap_charact">
+			<?php
 			foreach ($fields as $field) {
 				$label = $field['label'];
+				if(!empty($field['value'])){
 				?>
 				<div>
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/dimensions_icon/<?php echo $urls_slugs[$label] ? $urls_slugs[$label] : $urls_slugs['По умолчанию'];?>" title=""/>
 					<span><?php echo esc_html($field['label']); ?>: </span> <?php  echo esc_html($field['value']); ?>
-				</div>
+				</div> 
 				<?php
+				}
 			}
+			?>
+				</div>
+			</div>
+			<?php
 		}
 		?>
-		</div>
-	</div>
 	<?php
 }
