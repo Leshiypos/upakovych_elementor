@@ -75,7 +75,6 @@ window.addEventListener("load", () => {
     function (event) {
       // event.detail.contactFormId — ID формы, можно проверить, что нужная форма
       // event.target — сам DOM-элемент .wpcf7, в который вложена форма
-
       // Например, чтобы реагировать только на конкретную форму:
       if (event.detail.contactFormId == "6756") {
         ym(100712159, "reachGoal", "kupit_1_klick");
@@ -86,6 +85,9 @@ window.addEventListener("load", () => {
         setTimeout(() => {
           document.querySelector("#popmake-8507 .popmake-close").click();
         }, 5000);
+      }
+      if (event.detail.contactFormId == "8671") {
+        console.log("Форма Нашли дешевле отправлена");
       }
     },
     false
