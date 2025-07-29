@@ -400,3 +400,162 @@ function description_short_code_func(){
 		?>
 	<?php
 }
+
+// Страница доставки и оплаты
+
+add_shortcode('delivery_and_payment_page','delivery_and_payment_page_func');
+
+function delivery_and_payment_page_func(){
+	?>
+<div class="delivery_page">
+	<section class="variant_del">
+		<div class="flex">
+			<h3>Варианты и условия доставки</h3>
+			<p>Мы заботимся о вашем удобстве и предлагаем несколько способов доставки продукции, чтобы вы могли выбрать оптимальный вариант для вашего региона и типа заказа.</p>
+			<h3>Доставка по Москве:</h3>
+			<ul>
+				<li>Самовывоз со склада или одного из РЦ - <b>бесплатно</b></li>
+				<li>Доставка по СПб и ЛО при заказе от 20тыс руб (до 1го паллета/800кг) - <b>бесплатно</b></li>
+				<li>Доставка до ТК для клиентов из другого города (негабаритный товар) - <b>бесплатно</b></li>
+				<li>Доставка по СПб - <b>от 299 ₽</b></li>
+				<li>Доставка в регионы - <b>индивидуально</b></li>
+			</ul>
+			<p class="footnote">* Доставку в другие города и регионы России можно обсудить с менеджером — свяжитесь с нами любым удобным способом</p>
+		</div>
+		<div>
+			<img src="http://upakovych.ru/wp-content/uploads/2025/07/car_delivery.png" alt="Доставка автомобилем" title="Доставка автомобилем">
+		</div>
+	</section>
+
+	<section class="map_zones">
+		<h2>Зоны доставки</h2>
+		<div class="flex">
+			<div><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa47a3bd9abe782b16a17c22549031ff9f3d072cdad67bcd46b0925665c959d10&amp;width=465&amp;height=467&amp;lang=ru_RU&amp;scroll=true"></script></div>
+			<div>
+				<div>
+					<h3>Доставка по СПБ и ЛО:</h3>
+					<ul class="delivery_zone">
+						<li class="green">1-я зона  (до 900  ₽)</li>
+						<li class="yellow">2-я зона (до 1800  ₽)</li>
+						<li class="red">3- я зона (от 2400  ₽)</li>
+					</ul>
+				</div>
+				<div>
+					<p class="footnote">* Объём - до 1 паллета</p>
+					<p class="footnote">* Вес - до 800 кг</p>
+					<p class="footnote">* Подробнее об условиях доставки можно уточнить у менеджера </p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="delivery_times">
+		<h2>Сроки доставки</h2>
+		<div class="flex">
+
+			<div class="outer_block">
+				<div class="inner_block">
+					<h4>По Москве</h4>
+					<p class="headline">Срок: от 1 рабочего дня</p>
+					<ul>
+						<li>Заказы, оформленные до 13:00, могут быть доставлены уже на следующий рабочий день.</li>
+						<li>Если товар есть на складе, доставка возможна в день заказа — по согласованию.</li>
+						<li>В выходные и праздничные дни доставка осуществляется по индивидуальному графику</li>
+						<li>При оформлении крупногабаритного заказа срок доставки может увеличиться на 1–2 дня.</li>
+						<li>Доставка осуществляется по зонам — Зона 1, 2 и 3 (см. карту).</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="outer_block">
+				<div class="inner_block">
+					<h4>По России (ТК)</h4>
+					<p class="headline">Срок: от 2 до 7 рабочих дней</p>
+					<ul>
+						<li>Мы отправляем грузы в любой регион России удобной для вас транспортной компанией: СДЭК, Деловые линии, ПЭК, Энергия, Байкал Сервис и др.</li>
+						<li>Отправка производится в течение 1 рабочего дня после подтверждения заказа.</li>
+						<li>Сроки зависят от региона получателя и графика работы ТК</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="outer_block">
+				<div class="inner_block">
+					<h4>Экспресс-доставка</h4>
+					<p class="headline">Срок: от 2–4 часов до 1 дня (в пределах СПб)</p>
+					<ul>
+						<li>Осуществляется в день заказа, если он подтверждён до 12:00.</li>
+						<li>Доступна при наличии товара на складе и при условии согласования с менеджером.</li>
+						<li>Возможна доставка курьером или по договорённости — через сервисы срочной доставки.</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="payment_methods">
+		<h2>Способы оплаты</h2>
+		<div class="site-payment-methods">
+			<div class="site-payment-method">
+			<b>Для физических лиц</b>
+			<div class="site-payment-desc">
+				<div>
+					<img src="/wp-content/uploads/2025/07/wallet.svg">
+					<div>Наличный расчет</div>
+				</div>
+				<div>
+					<img src="/wp-content/uploads/2025/07/credit-card.svg">
+					<div>Банковская карта</div>
+				</div>
+				<div>
+					<img src="/wp-content/uploads/2025/07/qr.svg">
+					<div> QR-код</div>
+				</div>
+				<div>
+					<img src="/wp-content/uploads/2025/07/SBP.svg">
+					<div>СБП</div>
+				</div>
+				<div>
+					<img src="/wp-content/uploads/2025/07/money-bill-transfer.svg">
+					<div>Банковский перевод</div>
+				</div>
+			</div>
+			</div>
+			<div class="site-payment-method">
+			<b>Для юридических лиц</b>
+			<div class="site-payment-desc">
+						<div>
+					<img src="/wp-content/uploads/2025/07/task-checklist.svg">
+					<div>Оплата по счету</div>
+				</div>
+						<div>
+					<img src="/wp-content/uploads/2025/07/credit-card.svg">
+					<div>Банковская карта</div>
+				</div>
+						<div>
+					<img src="/wp-content/uploads/2025/07/qr.svg">
+					<div>QR-код</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<h2>Оставьте заявку и менеджер с Вами свяжется</h2>
+		<div>
+			<div>
+				<img src="/wp-content/uploads/2025/07/man_with_ipad.png" alt="Изображжение консультанта" title="Изображжение консультанта">
+			</div>
+			<div>
+				<?php echo do_shortcode('[metform form_id="314"]'); ?>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+
+	<?php
+}

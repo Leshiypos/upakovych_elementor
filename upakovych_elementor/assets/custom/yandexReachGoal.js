@@ -87,7 +87,10 @@ window.addEventListener("load", () => {
         }, 5000);
       }
       if (event.detail.contactFormId == "8671") {
-        console.log("Форма Нашли дешевле отправлена");
+        ym(100712159, "reachGoal", "need_cheaper");
+      }
+      if (event.detail.contactFormId == "8676") {
+        ym(100712159, "reachGoal", "opt");
       }
     },
     false
