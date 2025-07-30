@@ -1434,7 +1434,9 @@ form.woocommerce-checkout {
 
 @media screen and (max-width: 768px) {
   .elementor-element-df8445d {
-    padding: 10px !important;
+    padding: 15px !important;
+    padding-top: 25px !important;
+    width: 100%;
   }
   .elementor-element-df8445d * {
     font-size: 12px;
@@ -1997,4 +1999,256 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 30px rgba(44, 62, 80, 0.08);
   padding: 28px 28px 18px 28px;
+}
+.single-product .site-payment-method .site-payment-desc > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+.single-product .site-payment-method .site-payment-desc > div img {
+  width: 23px;
+  height: 23px;
+}
+
+/* ***********Страница доставки Новая .delivery_page************ */
+.elementor-element-024bb8d h1 {
+  font-size: 32px;
+  font-weight: 600 !important;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 40px;
+}
+.delivery_page section {
+  margin-bottom: 80px;
+}
+.delivery_page h2 {
+  margin-bottom: 32px;
+}
+.delivery_page p {
+  text-align: justify;
+}
+/* секция Доставка и оплата */
+.variant_del .flex {
+  align-items: center;
+}
+.delivery_page section.variant_del {
+  border-radius: 40px;
+  padding: 35px 32px 65px 32px;
+  background-color: rgba(246, 246, 246, 1);
+}
+
+.variant_del .footnote {
+  margin: 0;
+  margin-top: 30px;
+  font-weight: 600;
+}
+.variant_del .flex > div {
+  flex: 1;
+}
+.variant_del .flex > div.left_column {
+  flex: 5 5 500px;
+}
+.variant_del .flex > div.right_column {
+  flex: 4 4 400px;
+  display: flex;
+  justify-content: center;
+}
+.variant_del .left_column {
+}
+
+/* секция Зона доставки */
+.map_zones > .flex {
+  align-items: stretch;
+}
+.map_zones .right_column.flex {
+  align-items: normal;
+}
+.map_zones .left_column {
+  flex: 4 4 400px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.map_zones .right_column {
+  flex: 4 4 400px;
+}
+
+.map_zones .right_column.flex {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.map_zones .footnote {
+  margin: 0;
+  font-weight: 600;
+}
+.map_zones .right_column > div {
+  height: fit-content;
+}
+.map_zones .right_column > div:last-child {
+  margin-top: auto;
+}
+.map_zones .delivery_zone {
+  padding-left: 0;
+}
+.map_zones .delivery_zone li {
+  display: block;
+  padding: 5px;
+  padding-left: 10px;
+  margin-left: 0;
+  min-width: 300px;
+  margin-bottom: 7px;
+  border-radius: 5px;
+}
+.map_zones .delivery_zone li.green {
+  background-color: rgba(122, 195, 131, 1);
+  color: rgb(255, 255, 255);
+}
+.map_zones .delivery_zone li.yellow {
+  background-color: rgba(255, 206, 49, 1);
+  color: rgb(0, 0, 0);
+}
+.map_zones .delivery_zone li.red {
+  background-color: rgba(255, 4, 49, 1);
+  color: rgb(255, 255, 255);
+}
+.map_zones h3 {
+  margin-top: -5px;
+}
+
+@media screen and (max-width: 860px) {
+  .map_zones > .flex {
+    gap: 20px;
+  }
+  .map_zones .right_column.flex {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .map_zones .right_column > div:last-child {
+    margin-top: 0;
+  }
+  .map_zones h3 {
+    margin-top: 0;
+  }
+}
+
+/* секция Сроки доставки */
+.delivery_times .outer_block {
+  flex: 1 1 300px;
+  background-color: rgba(197, 217, 47, 1);
+  padding: 0;
+  padding-left: 4px;
+  border-radius: 10px;
+}
+
+.delivery_times .inner_block {
+  background-color: rgba(246, 246, 246, 1);
+  border-radius: 10px;
+  padding: 15px 20px 25px 20px;
+  height: 100%;
+}
+
+/* секция Способы оплаты */
+.site-payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+}
+.site-payment-method {
+  flex: 1;
+}
+
+.site-payment-method .site-payment-desc > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+.site-payment-method .site-payment-desc > div img {
+  width: 23px;
+  height: 23px;
+}
+
+/* секция Оставить заявку */
+.leave_a_request .flex {
+  justify-content: flex-start;
+  align-items: center;
+}
+.leave_a_request .flex > div {
+  flex: 1 1 350px;
+}
+.leave_a_request .left_column {
+  max-width: 350px;
+}
+.leave_a_request .left_column img {
+  width: 100%;
+}
+.leave_a_request .elementor-element-5d4f4c1 {
+  margin-right: auto;
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .leave_a_request .elementor-314 .elementor-element.elementor-element-5d4f4c1 {
+    --width: 80% !important;
+  }
+}
+@media screen and (max-width: 775px) {
+  .leave_a_request .flex {
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 719px) {
+  .leave_a_request .left_column img {
+    display: none;
+  }
+}
+
+/* Остались вопросы */
+.other_questions {
+  background-color: rgba(0, 128, 129, 1);
+  border-radius: 40px;
+  padding: 38px;
+  color: rgb(255, 255, 255);
+}
+.other_questions a {
+  color: rgb(255, 255, 255);
+}
+.other_questions a.mail {
+  text-decoration: underline;
+}
+.other_questions a.mail:hover {
+  text-decoration: none;
+}
+.other_questions a:hover {
+  color: rgb(188, 209, 40);
+}
+
+@media screen and (max-width: 775px) {
+  .delivery_page section.variant_del {
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .flex {
+    gap: 20px;
+  }
+  .delivery_page section.other_questions {
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+/* ***********КОНЕЦ страницы доставки Новая .delivery_page************ */
+/* Общие классы */
+.text_center {
+  text-align: center;
 }

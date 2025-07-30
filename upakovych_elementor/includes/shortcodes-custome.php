@@ -410,34 +410,38 @@ function delivery_and_payment_page_func(){
 <div class="delivery_page">
 	<section class="variant_del">
 		<div class="flex">
-			<h3>Варианты и условия доставки</h3>
-			<p>Мы заботимся о вашем удобстве и предлагаем несколько способов доставки продукции, чтобы вы могли выбрать оптимальный вариант для вашего региона и типа заказа.</p>
-			<h3>Доставка по Москве:</h3>
-			<ul>
-				<li>Самовывоз со склада или одного из РЦ - <b>бесплатно</b></li>
-				<li>Доставка по СПб и ЛО при заказе от 20тыс руб (до 1го паллета/800кг) - <b>бесплатно</b></li>
-				<li>Доставка до ТК для клиентов из другого города (негабаритный товар) - <b>бесплатно</b></li>
-				<li>Доставка по СПб - <b>от 299 ₽</b></li>
-				<li>Доставка в регионы - <b>индивидуально</b></li>
-			</ul>
-			<p class="footnote">* Доставку в другие города и регионы России можно обсудить с менеджером — свяжитесь с нами любым удобным способом</p>
-		</div>
-		<div>
-			<img src="http://upakovych.ru/wp-content/uploads/2025/07/car_delivery.png" alt="Доставка автомобилем" title="Доставка автомобилем">
+			<div class="left_column">
+				<h3>Варианты и условия доставки</h3>
+				<p>Мы заботимся о вашем удобстве и предлагаем несколько способов доставки продукции, чтобы вы могли выбрать оптимальный вариант для вашего региона и типа заказа.</p>
+				<h3>Доставка по Москве:</h3>
+				<ul>
+					<li>Самовывоз со склада или одного из РЦ - <b>бесплатно</b></li>
+					<li>Доставка по СПб и ЛО при заказе от 20тыс руб (до 1го паллета/800кг) - <b>бесплатно</b></li>
+					<li>Доставка до ТК для клиентов из другого города (негабаритный товар) - <b>бесплатно</b></li>
+					<li>Доставка по СПб - <b>от 299 ₽</b></li>
+					<li>Доставка в регионы - <b>индивидуально</b></li>
+				</ul>
+				<p class="footnote">* Доставку в другие города и регионы России можно обсудить с менеджером — свяжитесь с нами любым удобным способом</p>
+			</div>
+			<div class="right_column">
+				<img src="http://upakovych.ru/wp-content/uploads/2025/07/car_delivery.png" alt="Доставка автомобилем" title="Доставка автомобилем">
+			</div>
 		</div>
 	</section>
 
 	<section class="map_zones">
 		<h2>Зоны доставки</h2>
 		<div class="flex">
-			<div><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa47a3bd9abe782b16a17c22549031ff9f3d072cdad67bcd46b0925665c959d10&amp;width=465&amp;height=467&amp;lang=ru_RU&amp;scroll=true"></script></div>
-			<div>
+			<div class="left_column">
+				<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa47a3bd9abe782b16a17c22549031ff9f3d072cdad67bcd46b0925665c959d10&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+			</div>
+			<div class="right_column flex">
 				<div>
 					<h3>Доставка по СПБ и ЛО:</h3>
 					<ul class="delivery_zone">
-						<li class="green">1-я зона  (до 900  ₽)</li>
-						<li class="yellow">2-я зона (до 1800  ₽)</li>
-						<li class="red">3- я зона (от 2400  ₽)</li>
+						<li class="green">• 1-я зона  (до 900  ₽)</li>
+						<li class="yellow">• 2-я зона (до 1800  ₽)</li>
+						<li class="red">• 3-я зона (от 2400  ₽)</li>
 					</ul>
 				</div>
 				<div>
@@ -450,7 +454,7 @@ function delivery_and_payment_page_func(){
 	</section>
 
 	<section class="delivery_times">
-		<h2>Сроки доставки</h2>
+		<h2 class="text_center">Сроки доставки</h2>
 		<div class="flex">
 
 			<div class="outer_block">
@@ -542,20 +546,35 @@ function delivery_and_payment_page_func(){
 		</div>
 	</section>
 
-	<section>
+	<section class="leave_a_request">
 		<h2>Оставьте заявку и менеджер с Вами свяжется</h2>
-		<div>
-			<div>
+		<div class="flex">
+			<div class="left_column">
 				<img src="/wp-content/uploads/2025/07/man_with_ipad.png" alt="Изображжение консультанта" title="Изображжение консультанта">
 			</div>
-			<div>
+			<div class="right_column">
 				<?php echo do_shortcode('[metform form_id="314"]'); ?>
 			</div>
 		</div>
 	</section>
 
+	<section class="other_questions">
+		<div class="flex">
+			<div class="left_column">
+				<h2>Остались вопросы</h2>
+				<p>Наши менеджеры всегда готовы помочь:</p>
+				<ul>
+					<li><a href="tel:88001019652">8 (8000) 101-96-52 (бесплатный звонок по России)</a></li>
+					<li><a href="tel:89921854801">8 (992) 185-48-01</a></li>
+					<li><a href="mailto:7795@upakovych.ru" class="mail">7795@upakovych.ru</a></li>
+				</ul>
+			</div>
+			<div class="right_column">
+				<img src="/wp-content/uploads/2025/07/box_package.png" alt="Рисунок коробки и упаковка" title="Рисунок коробки и упаковка" >
+			</div>
+		</div>
+	</section>
+
 </div>
-
-
 	<?php
 }
