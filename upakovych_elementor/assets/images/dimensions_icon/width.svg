@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-  <polygon points="12,28 28,28 34,22 18,22" fill="#A8E063" fill-opacity="0.7"/>
-  <polygon points="12,28 18,22 18,12 12,18" fill="#C3F0B5" fill-opacity="0.7"/>
-  <polygon points="28,28 34,22 34,12 28,18" fill="#21B573" fill-opacity="0.7"/>
-  <line x1="12" y1="28" x2="28" y2="28" stroke="#21B573" stroke-width="2"/>
-  <polygon points="12,28 16,30 24,30 28,28" fill="url(#width-gradient)" opacity="0.7"/>
-  <text x="20" y="35" font-size="7" text-anchor="middle" fill="#21B573" font-family="Arial" font-weight="bold">↔</text>
-  <defs>
-    <linearGradient id="width-gradient" x1="12" y1="28" x2="28" y2="28" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#A8E063"/>
-      <stop offset="1" stop-color="#21B573"/>
-    </linearGradient>
-  </defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" id="arrow-circle-down" viewBox="0 0 24 24" width="36" height="36"><g><path fill="#3DB845" d="M23,16H2.681l.014-.015L4.939,13.7a1,1,0,1,0-1.426-1.4L1.274,14.577c-.163.163-.391.413-.624.676a2.588,2.588,0,0,0,0,3.429c.233.262.461.512.618.67l2.245,2.284a1,1,0,0,0,1.426-1.4L2.744,18H23a1,1,0,0,0,0-2Z"/><path fill="#3DB845" d="M1,8H21.255l-2.194,2.233a1,1,0,1,0,1.426,1.4l2.239-2.279c.163-.163.391-.413.624-.675a2.588,2.588,0,0,0,0-3.429c-.233-.263-.461-.513-.618-.67L20.487,2.3a1,1,0,0,0-1.426,1.4l2.251,2.29L21.32,6H1A1,1,0,0,0,1,8Z"/></g></svg>

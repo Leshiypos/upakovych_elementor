@@ -166,6 +166,13 @@ function custom_script(){
 	wp_enqueue_script( 'custom-script', get_template_directory_uri(  ).'/assets/custom/custom.js', array('jquery'), null, true );
 	wp_enqueue_script( 'reach-goal-script', get_template_directory_uri(  ).'/assets/custom/yandexReachGoal.js', array(), null, true );
 	wp_enqueue_style('custom-theme-style',get_template_directory_uri() . '/assets/custom/custom.css',[],'1.0.0');
+
+
+	// sections
+	wp_enqueue_script( 'custom-swiper-script', get_template_directory_uri(  ).'/assets/custom/sections/libs/swiper/swiper-bundle.min.js', array('jquery'), null, true );
+	wp_enqueue_script( 'custom-sections-script', get_template_directory_uri(  ).'/assets/custom/sections/js/main_section.js', array('jquery'), null, true );
+	wp_enqueue_style('custom-theme-swiper-style',get_template_directory_uri() . '/assets/custom/sections/libs/swiper/swiper-bundle.min.css',[],'1.0.0');
+	wp_enqueue_style('custom-theme-sections-style',get_template_directory_uri() . '/assets/custom/sections/css/styles.css',[],'1.0.0');
 }
 
 add_action( 'wp_enqueue_scripts', 'hello_elementor_scripts_styles' );
@@ -390,6 +397,7 @@ function upavovych_cpt(){
 
 // Shortcodes
 require get_template_directory() . '/includes/shortcodes-custome.php';
+require get_template_directory() . '/includes/shortcodes-sections-custome.php';
 
 
 
@@ -621,3 +629,32 @@ function check_hook(){
     remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
 
 ?>
+<?php
+// разрешить загрузку SVG только администраторам
+// Разрешаем SVG только администраторам
+add_filter('upload_mimes', function ($mimes) {
+    if (current_user_can('manage_options')) {
+        $mimes['svg']  = 'image/svg+xml';
+        $mimes['svgz'] = 'image/svg+xml';
+    } else {
+        // на всякий случай запретим, если кто-то добавил ранее
+        unset($mimes['svg'], $mimes['svgz']);
+    }
+    return $mimes;
+});
+add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    if (in_array($ext, ['svg','svgz'], true)) {
+        $data['ext']             = 'svg';
+        $data['type']            = 'image/svg+xml';
+        $data['proper_filename'] = $data['proper_filename'] ?: $filename;
+    }
+    return $data;
+}, 10, 4);
+// Минимальный фикс превью в админке
+add_action('admin_head', function () {
+    echo '<style>
+      .attachment .thumbnail img[src$=".svg"],
+      .media-icon img[src$=".svg"]{ width:100%; height:auto; }
+    </style>';
+});
