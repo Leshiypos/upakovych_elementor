@@ -1915,7 +1915,9 @@ main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 30px;
+  gap: 15px;
+  column-gap: 25px;
+  margin-top: 15px;
 }
 .single-product .characteristics .wrap_charact img {
   width: 25px;
@@ -1929,6 +1931,7 @@ main {
   align-items: center;
   gap: 5px;
   flex: 1 1 150px;
+  /* white-space: nowrap; */
 }
 .woocommerce-notices-wrapper {
   margin-top: 20px !important;

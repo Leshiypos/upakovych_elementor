@@ -750,7 +750,7 @@ function geography_work_section_func(){
 	}
 }
 
-// <!-- Секция Ответы на частые вопросы --> Шаблон элементор
+// <!-- Секция Ответы на частые вопросы --> Шаблон элементор [answers_asked_questions_section]
 add_shortcode( 'answers_asked_questions_section', "answers_asked_questions_section_func" );
 function answers_asked_questions_section_func(){
 	$context = upakovych_get_acf_context_id();
@@ -1201,6 +1201,37 @@ function tabs_section_func(){
 			}
 		}
 		?>
+            </div>
+          </div>
+        </div>
+      </section>
+<?php
+	}
+}
+
+// <!--Секция  Ключевые преимущества продукта --> [key_advantages_single_product_section]
+
+add_shortcode( "key_advantages_single_product_section", "key_advantages_single_product_section_func" );
+
+function key_advantages_single_product_section_func(){
+	$key_advantages_single_product = get_field('key_advantages_single_product');
+	$is_active_key_advantages_single_product_section = $key_advantages_single_product['is_active_section'] ?? false; 
+	if($is_active_key_advantages_single_product_section){
+?>
+      <section class="key_advantages_single_product_section">
+        <div class="wrap_section">
+          <h2 class="pseudo_h1"><?php echo check_empty($key_advantages_single_product['title'], "Введите заголовок"); ?></h2>
+          <div class="content_wrap">
+            <div>
+              <img
+                src="<?php echo $key_advantages_single_product['url_img']; ?>"
+                class="schedule"
+                alt="schedule"
+              />
+            </div>
+
+            <div class="description">
+			<?php echo check_empty($key_advantages_single_product['description'], "Введите Описание"); ?>
             </div>
           </div>
         </div>

@@ -350,6 +350,7 @@ function form_wholesale_price_func(){
 add_shortcode('description_short_code', 'description_short_code_func');
 
 function description_short_code_func(){
+	
 	$urls_slugs = [
 		"Ширина, м" => "width.svg",
 		"Ширина, см" => "width.svg",
@@ -371,6 +372,9 @@ function description_short_code_func(){
 	];
 	global $post;
 	$fields = get_field_objects($post->ID);
+	// Получаем дополнительные характеристики - если они есть
+	$additional_characteristics = get_field('additional_characteristics');
+
 ?>
 
 
@@ -384,14 +388,30 @@ function description_short_code_func(){
 			foreach ($fields as $field) {
 				$label = $field['label'];
 				if(!empty($field['value'])){
+					if (!empty($urls_slugs[$label])) {
 				?>
+
 				<div>
 					<img src="<?php echo get_template_directory_uri(); ?>/assets/images/dimensions_icon/<?php echo $urls_slugs[$label] ? $urls_slugs[$label] : $urls_slugs['По умолчанию'];?>" title=""/>
 					<span><?php echo esc_html($field['label']); ?>: </span> <?php  echo esc_html($field['value']); ?>
 				</div> 
 				<?php
+					}
 				}
 			}
+			?>
+			<?php 
+				if ($additional_characteristics && !empty($additional_characteristics['characteristic'])){
+					foreach ($additional_characteristics['characteristic'] as $characteristic){
+			?>
+				<div>
+					<img src="<?php echo $characteristic['icon_img'] ? $characteristic['icon_img'] : get_template_directory_uri().'/assets/images/dimensions_icon/volume.svg'; ?>" title="char"/>
+					<span><?php echo $characteristic['description']; ?> </span>
+				</div> 
+			<?php
+					}
+				}
+			
 			?>
 				</div>
 			</div>

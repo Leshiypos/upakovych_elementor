@@ -79,4 +79,42 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  //   Секция табы Single Product
+  function tabSectionBtns() {
+    let tabsBlock = document.getElementById("tabs_block");
+    if (tabsBlock) {
+      let btnTabs = tabsBlock.querySelectorAll(".header_tabs .tab");
+      let contentTabs = tabsBlock.querySelectorAll(".content_tabs .content");
+
+      if (btnTabs) {
+        btnTabs.forEach((tab) => {
+          tab.addEventListener("click", (e) => {
+            let target = e.currentTarget;
+            if (!target.classList.contains("active")) {
+              let dataTab = target.dataset.connectionTab;
+
+              contentTabs.forEach((t) => {
+                if (t.classList.contains("active")) {
+                  t.classList.remove("active");
+                }
+              });
+
+              btnTabs.forEach((t) => {
+                if (t.classList.contains("active")) {
+                  t.classList.remove("active");
+                }
+              });
+
+              let activateTab = tabsBlock.querySelector(`#${dataTab}`);
+              if (activateTab) {
+                target.classList.add("active");
+                activateTab.classList.add("active");
+              }
+            }
+          });
+        });
+      }
+    }
+  }
+  tabSectionBtns();
 });
