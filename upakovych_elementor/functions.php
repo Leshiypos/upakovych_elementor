@@ -399,6 +399,8 @@ function upavovych_cpt(){
 require get_template_directory() . '/includes/shortcodes-custome.php';
 require get_template_directory() . '/includes/shortcodes-sections-custome.php';
 
+// Редактирование шаблонов woo (хуки)
+require get_template_directory() . '/includes/woo/hooks_woo.php';
 
 
 // Добавляем облако тэгов
@@ -540,47 +542,6 @@ function mobile_menu_in_product_func(){
 	<?php
 }
 
-
-
-// // Термоэтикетки
-// add_action('woocommerce_before_shop_loop', function() {
-// 	$filtred_category = array(
-// 		'termoetiketki-plg-v-t-ch-transfernye-termotransfernye',
-// 		'termoetiketki-top',
-// 		'termoetiketki-eko-samokleyashchiesya-etikety-v-rulonakh-eko',
-// 	);
-//     if (is_product_category($filtred_category)) {
-//         echo do_shortcode('[fe_widget id="7034"]');
-//     }
-// }, 5);
-
-
-
-
-
-
-// add_action('woocommerce_before_shop_loop', function() {
-// 	$term = get_queried_object();
-// 	if (!$term || empty($term->slug)) return;
-
-// 	$slug = $term->slug;
-
-// 	$filters = [
-// 		// Категории для коробок
-// 		'chetirehklyapannie-korobki' => 6878,
-// 		'samosbornie-korobki' => 6878,
-// 		'samosbornie-korobki-s-okoshkom' => 6878,
-
-// 		// Категории для термоэтикеток
-// 		'termoetiketki-plg-v-t-ch-transfernye-termotransfernye' => 7034,
-// 		'termoetiketki-top' => 7034,
-// 		'termoetiketki-eko-samokleyashchiesya-etikety-v-rulonakh-eko' => 7034,
-// 	];
-
-// 	if (isset($filters[$slug])) {
-// 		echo do_shortcode('[fe_widget id="' . $filters[$slug] . '"]');
-// 	}
-// }, 5);
 
 // Форма доставки
 // отключаем доставку по другому адресу
