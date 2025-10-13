@@ -1,10 +1,10 @@
-.about_company_section .advantages_block .card .card_content span, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
-  font-size: 60px; }
+.about_company_section .advantages_block .card .card_content span {
+  font-size: 50px; }
   @media screen and (max-width: 1000px) {
-    .about_company_section .advantages_block .card .card_content span, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
+    .about_company_section .advantages_block .card .card_content span {
       font-size: 40px; } }
   @media screen and (max-width: 650px) {
-    .about_company_section .advantages_block .card .card_content span, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
+    .about_company_section .advantages_block .card .card_content span {
       font-size: 20px; } }
 
 section h1,
@@ -15,22 +15,22 @@ section .pseudo_h1, .geography_work_section .wrap_section h2 {
     section .pseudo_h1, .geography_work_section .wrap_section h2 {
       font-size: 32px; } }
 
-section h2 {
+section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
   font-size: 36px; }
   @media screen and (max-width: 1000px) {
-    section h2 {
-      font-size: 32px; } }
+    section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
+      font-size: 30px; } }
 
-section h2.title_right, section h2.title_left, .main_advantages_section.geography h2, .cta_feedback_section .wrap_section .col_1 p {
+section h2.title_right, section h2.title_left, .main_advantages_section.geography h2 {
   font-size: 32px; }
   @media screen and (max-width: 1000px) {
-    section h2.title_right, section h2.title_left, .main_advantages_section.geography h2, .cta_feedback_section .wrap_section .col_1 p {
+    section h2.title_right, section h2.title_left, .main_advantages_section.geography h2 {
       font-size: 26px; } }
 
-section h3 {
+section h3, .cta_feedback_section .wrap_section .col_1 p {
   font-size: 26px; }
   @media screen and (max-width: 1000px) {
-    section h3 {
+    section h3, .cta_feedback_section .wrap_section .col_1 p {
       font-size: 22px; } }
 
 .key_product_segments_section .catalog_products h4, .JTBD_buyers_section .card .question, .stages_cooperation_section .step .content_step h3, .geography_work_section .wrap_section .post_title, .cta_feedback_section .wrap_section .col_2 h3 {
@@ -45,10 +45,10 @@ section h3 {
     .hero_section .discription p {
       font-size: 16px; } }
 
-.btn, section p, .about_company_section .wrap_content .description, .our_clients_section .content .description, .stages_cooperation_section .step .content_step .description, .main_advantages_section.geography ul li, .contacts_section .wrap_content h3 {
+.btn, section p, .about_company_section .wrap_content .description, .our_clients_section .content .description, .stages_cooperation_section .step .content_step .description, .main_advantages_section.geography ul li, .contacts_section .wrap_content h3, .tabs_section .header_tabs .tab, .tabs_section .content, .tabs_section .content p, .tabs_section .content li, .key_advantages_single_product_section .content_wrap .description {
   font-size: 16px; }
   @media screen and (max-width: 1000px) {
-    .btn, section p, .about_company_section .wrap_content .description, .our_clients_section .content .description, .stages_cooperation_section .step .content_step .description, .main_advantages_section.geography ul li, .contacts_section .wrap_content h3 {
+    .btn, section p, .about_company_section .wrap_content .description, .our_clients_section .content .description, .stages_cooperation_section .step .content_step .description, .main_advantages_section.geography ul li, .contacts_section .wrap_content h3, .tabs_section .header_tabs .tab, .tabs_section .content, .tabs_section .content p, .tabs_section .content li, .key_advantages_single_product_section .content_wrap .description {
       font-size: 14px; } }
 
 .about_company_section .advantages_block .card .card_content {
@@ -299,6 +299,13 @@ section {
       padding-left: 10px;
       padding-right: 10px; } }
 
+.main_content_product .hero_section {
+  margin-top: 0; }
+  .main_content_product .hero_section .content_block {
+    flex: 1; }
+  .main_content_product .hero_section .slider_wrap {
+    flex: 1; }
+
 .hero_section .wrap_content {
   display: flex;
   flex-direction: row; }
@@ -391,6 +398,13 @@ section {
     .about_company_section .wrap_content h2 {
       font-size: 20px; } }
 
+@media screen and (max-width: 1200px) {
+  .main_content_product .main_advantages_section .features {
+    display: flex;
+    flex-direction: column; }
+  .main_content_product .main_advantages_section .feature {
+    flex: 0 1 auto; } }
+
 .main_advantages_section .features {
   display: flex;
   flex-wrap: wrap;
@@ -463,7 +477,8 @@ section {
   .key_product_segments_section .catalog_products img {
     object-fit: cover;
     aspect-ratio: 1/1;
-    width: 80%; }
+    width: 80%;
+    z-index: -1; }
 .key_product_segments_section .cta_primary {
   margin-top: 70px;
   margin-left: auto;
@@ -487,6 +502,16 @@ section {
   .key_product_segments_section .catalog_products {
     display: flex;
     flex-flow: column nowrap; } }
+
+.main_content_product .JTBD_buyers_section h2.title_right {
+  text-align: center;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 90px; }
 
 .JTBD_buyers_section {
   margin-top: 120px;
@@ -577,7 +602,8 @@ section {
     .our_clients_section .swiper-slide img.slide_img {
       border-radius: 20px;
       object-fit: cover;
-      width: 100%; }
+      width: 100%;
+      max-width: 417px; }
   .our_clients_section .content {
     padding: 10px 2% 10px 5%;
     display: flex;
@@ -587,6 +613,10 @@ section {
       display: flex;
       flex-flow: row nowrap;
       gap: 10px; }
+      .our_clients_section .content .header_block .logo_content {
+        display: flex;
+        align-items: center;
+        min-width: 60px; }
     .our_clients_section .content .description {
       font-weight: 400;
       line-height: 160%;
@@ -605,16 +635,20 @@ section {
         display: none; }
       .our_clients_section .swiper-slide {
         flex-direction: column; }
+        .our_clients_section .swiper-slide img.slide_img {
+          max-width: 100%; }
       .our_clients_section .content {
         margin-top: 50px;
         padding-bottom: 30px; }
         .our_clients_section .content .header_block {
-          margin-bottom: 15px; } }
+          margin-bottom: 15px; }
+          .our_clients_section .content .header_block .logo_content {
+            min-width: unset; } }
 
 .general_customer_reviews_section h2 {
   margin-bottom: 20px; }
 .general_customer_reviews_section .reviews_about {
-  width: 720px;
+  max-width: 720px;
   height: 900px;
   overflow: hidden;
   position: relative;
@@ -623,6 +657,9 @@ section {
 @media screen and (max-width: 800px) {
   .general_customer_reviews_section .reviews_about {
     width: 100%; } }
+
+.main_content_product .stages_cooperation_section {
+  border-radius: 20px; }
 
 .stages_cooperation_section {
   overflow: hidden;
@@ -738,8 +775,8 @@ section {
     margin-bottom: 20px; } }
 
 .cta_feedback_section {
-  margin-top: 150px;
-  margin-bottom: 150px; }
+  margin-top: 100px;
+  margin-bottom: 100px; }
   .cta_feedback_section .wrap_section {
     display: flex;
     flex-flow: row wrap;
@@ -749,7 +786,7 @@ section {
       flex: 6;
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 50px;
       justify-content: space-between;
       background-color: #008081;
       padding: 40px;
@@ -766,18 +803,38 @@ section {
         color: rgba(255, 255, 255, 0.6); }
         .cta_feedback_section .wrap_section .col_1 p a {
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.9); }
+          color: rgba(255, 255, 255, 0.9);
+          text-decoration: none; }
       .cta_feedback_section .wrap_section .col_1 .btn {
         margin-left: auto;
         margin-right: auto; }
     .cta_feedback_section .wrap_section .col_2 {
-      flex: 3; }
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
       .cta_feedback_section .wrap_section .col_2 h3 {
         font-weight: 300;
         text-align: center; }
+      .cta_feedback_section .wrap_section .col_2 #main_form {
+        width: 100%;
+        max-width: 100%; }
   @media screen and (max-width: 1000px) {
     .cta_feedback_section .wrap_section .col_1 {
-      gap: 40px; } }
+      gap: 40px;
+      padding: 20px; }
+      .cta_feedback_section .wrap_section .col_1 h2 {
+        font-size: 28px; }
+      .cta_feedback_section .wrap_section .col_1 p a {
+        font-size: 28px; } }
+  @media screen and (max-width: 400px) {
+    .cta_feedback_section .wrap_section .col_1 {
+      gap: 35px;
+      padding: 20px; }
+      .cta_feedback_section .wrap_section .col_1 h2 {
+        font-size: 24px; }
+      .cta_feedback_section .wrap_section .col_1 p a {
+        font-size: 24px; } }
 
 .news_sales_secton .wrap_section h2 {
   text-transform: none;
@@ -842,13 +899,13 @@ section {
     justify-content: space-between;
     align-items: center; }
   .logo_slide_section .logo_slide {
-    max-height: 70px;
     margin-left: auto;
     margin-right: auto;
     width: fit-content; }
     .logo_slide_section .logo_slide img {
       object-fit: cover;
       height: 100%;
+      max-height: 70px;
       margin-left: auto;
       margin-right: auto; }
   .logo_slide_section .logo_slider_btn {
@@ -895,5 +952,100 @@ section {
       width: 100%;
       max-width: 300px;
       margin-right: auto; } }
+
+.examples_use_section h2 {
+  margin-bottom: 55px; }
+.examples_use_section .img_block {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  gap: 29px; }
+  .examples_use_section .img_block .wrap_img {
+    flex: 1 1 150px; }
+    .examples_use_section .img_block .wrap_img img {
+      object-fit: cover;
+      aspect-ratio: 1/1;
+      width: 100%;
+      border-radius: 20px; }
+
+.tabs_section .header_tabs {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px;
+  margin-bottom: 17px; }
+  .tabs_section .header_tabs .tab {
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 15px 35px;
+    background-color: #f1f2f3;
+    color: rgba(0, 0, 0, 0.5);
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease; }
+    .tabs_section .header_tabs .tab.active, .tabs_section .header_tabs .tab:hover {
+      background-color: #548072;
+      color: white; }
+    .tabs_section .header_tabs .tab.active {
+      cursor: auto; }
+.tabs_section .content {
+  display: none;
+  padding: 36px;
+  box-shadow: 0 0 23px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px; }
+  .tabs_section .content.active {
+    display: block; }
+  .tabs_section .content h3 {
+    margin-bottom: 30px; }
+  .tabs_section .content ul {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 40px; }
+    .tabs_section .content ul li {
+      margin-bottom: 10px;
+      list-style: disc; }
+  .tabs_section .content ul.advantages {
+    padding-left: 0;
+    margin-bottom: 30px; }
+    .tabs_section .content ul.advantages li {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 20px; }
+      .tabs_section .content ul.advantages li p {
+        margin-bottom: 0; }
+      .tabs_section .content ul.advantages li img {
+        max-width: 30px; }
+  .tabs_section .content .documents {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 20px; }
+    .tabs_section .content .documents .doc {
+      flex: 1 1 200px; }
+      .tabs_section .content .documents .doc img {
+        width: 100%;
+        object-fit: cover; }
+@media screen and (max-width: 1000px) {
+  .tabs_section .content {
+    padding: 15px; } }
+
+.key_advantages_single_product_section h2 {
+  margin-bottom: 50px; }
+.key_advantages_single_product_section .content_wrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 42px; }
+  .key_advantages_single_product_section .content_wrap > div {
+    flex: 1 1 350px; }
+  .key_advantages_single_product_section .content_wrap img {
+    width: 100%; }
+  .key_advantages_single_product_section .content_wrap .description {
+    font-weight: 400;
+    line-height: 175%; }
 
 /*# sourceMappingURL=styles.css.map */

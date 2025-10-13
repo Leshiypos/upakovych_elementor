@@ -33,22 +33,34 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
     </div>
     <div class="section-content">
       <div class="delivery-methods">
-        <label class="delivery-method">
-          <input type="radio" name="delivery_option" value="courier" checked>
-          <strong>Доставка курьером</strong>
-        </label>
-        <label class="delivery-method">
-          <input type="radio" name="delivery_option" value="pickup">
-          <strong>Самовывоз</strong>
-        </label>
+
+<!-- вывод метода доставки -->
+<?php $packages = WC()->shipping->get_packages();
+foreach ( $packages as $i => $package ) {
+    $chosen_method = WC()->session->get( "chosen_shipping_methods" )[ $i ];
+    foreach ( $package['rates'] as $method_id => $rate ) {
+        ?>
+        <p class="delivery-method">
+            <input type="radio"
+                   name="shipping_method[<?php echo esc_attr( $i ); ?>]"
+                   data-index="<?php echo esc_attr( $i ); ?>"
+                   id="shipping_method_<?php echo esc_attr( $i ); ?>_<?php echo esc_attr( sanitize_title( $rate->id ) ); ?>"
+                   value="<?php echo esc_attr( $rate->id ); ?>"
+                   class="shipping_method"
+                   <?php checked( $method_id, $chosen_method ); ?> />
+            <strong><label for="shipping_method_<?php echo esc_attr( $i ); ?>_<?php echo esc_attr( sanitize_title( $rate->id ) ); ?>">
+                <?php echo wc_cart_totals_shipping_method_label( $rate ); ?>
+            </label></strong>
+        </p>
+        <?php
+    }
+} ?>
+
+<!--конец  вывод метода доставки -->
       </div>
       <div class="address-fields">
         <?php do_action('woocommerce_checkout_shipping'); ?>
-      </div>
-      <div class="delivery-zones">
-        <p>Зоны доставки (интерактивная карта или пояснение)</p>
-		<?php 
-		 ?>
+		<p class="note_for_order">*укажите адрес доставки</p>
       </div>
     </div>
   </div>
