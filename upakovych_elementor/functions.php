@@ -23,7 +23,7 @@ if ( ! function_exists( 'hello_elementor_setup' ) ) {
 	 */
 	function hello_elementor_setup() {
 		if ( is_admin() ) {
-			hello_maybe_update_theme_version_in_db();
+			hello_maybe_update_theme_version_in_db(); 
 		}
 
 		if ( apply_filters( 'hello_elementor_register_menus', true ) ) {

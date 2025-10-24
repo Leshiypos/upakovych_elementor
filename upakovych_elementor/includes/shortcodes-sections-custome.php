@@ -90,8 +90,8 @@ function hero_section_func(){
                 </p>
               </div>
               <div class="wrap_btn flex_row">
-                <a href="#" class="btn cta_primary">Рассчитать стоимость</a>
-                <a href="/katalog-tovarov/" class="btn cta_secondary">Перейти в каталог</a>
+				  <a href="/katalog-tovarov/" class="btn cta_primary ">Перейти в каталог</a>
+                <a href="#" class="btn cta_secondary">Рассчитать стоимость</a>
               </div>
             </div>
             <div class="slider_wrap">
