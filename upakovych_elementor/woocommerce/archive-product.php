@@ -48,8 +48,26 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
 	do_action( 'woocommerce_before_shop_loop' );
+	
 	echo '<div id="fe-container">';
 	woocommerce_product_loop_start();
+
+	// 1) Подкатегории (своё обёртывание UL)
+	$has_subcats = woocommerce_product_subcategories( array(
+		'before' => '<ul class="products columns-5 subcats">',
+		'after'  => '</ul>',
+	) );
+
+	// 2) Разделитель (вне UL)
+	if ( $has_subcats ) {
+			echo '
+	</ul>
+	<h2>Товары в категории</h2><br>
+	<ul class="products columns-5 flex-products">
+	'; // разрыв
+	}
+
+
 
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
@@ -59,7 +77,7 @@ if ( woocommerce_product_loop() ) {
 			 * Hook: woocommerce_shop_loop.
 			 */
 			do_action( 'woocommerce_shop_loop' );
-
+			
 			wc_get_template_part( 'content', 'product' );
 		}
 	}

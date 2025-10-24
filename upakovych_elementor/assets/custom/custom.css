@@ -583,6 +583,7 @@ ul.products > li {
   flex-direction: column !important;
   justify-content: space-between !important;
 }
+
 .woocommerce ul.products li.product .button.awooc-custom-order {
   background-color: var(--e-global-color-7459a87);
 }
@@ -2262,4 +2263,18 @@ main {
 /* Общие классы */
 .text_center {
   text-align: center;
+}
+
+/* ПРодукты категории */
+@media screen and (min-width: 800px) {
+  .products.flex-products {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+  }
+  .woocommerce ul.products.columns-5.flex-products li.product,
+  .woocommerce-page ul.products.flex-products li.product {
+    width: 20% !important;
+    min-width: 180px;
+  }
 }
