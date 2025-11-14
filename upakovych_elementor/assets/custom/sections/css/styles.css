@@ -15,10 +15,10 @@ section .pseudo_h1, .geography_work_section .wrap_section h2 {
     section .pseudo_h1, .geography_work_section .wrap_section h2 {
       font-size: 32px; } }
 
-section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
+section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p, .cta_feedback_section .wrap_section .col_1 p a {
   font-size: 36px; }
   @media screen and (max-width: 1000px) {
-    section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p a {
+    section h2, .main_content_product .JTBD_buyers_section h2.title_right, .cta_feedback_section .wrap_section .col_1 h2, .cta_feedback_section .wrap_section .col_1 p, .cta_feedback_section .wrap_section .col_1 p a {
       font-size: 30px; } }
 
 section h2.title_right, section h2.title_left, .main_advantages_section.geography h2 {
@@ -27,10 +27,10 @@ section h2.title_right, section h2.title_left, .main_advantages_section.geograph
     section h2.title_right, section h2.title_left, .main_advantages_section.geography h2 {
       font-size: 26px; } }
 
-section h3, .cta_feedback_section .wrap_section .col_1 p {
+section h3 {
   font-size: 26px; }
   @media screen and (max-width: 1000px) {
-    section h3, .cta_feedback_section .wrap_section .col_1 p {
+    section h3 {
       font-size: 22px; } }
 
 .key_product_segments_section .catalog_products h4, .JTBD_buyers_section .card .question, .stages_cooperation_section .step .content_step h3, .geography_work_section .wrap_section .post_title, .cta_feedback_section .wrap_section .col_2 h3 {
@@ -800,10 +800,10 @@ section {
         font-weight: 300;
         line-height: 140%;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6); }
+        color: rgba(255, 255, 255, 0.8); }
         .cta_feedback_section .wrap_section .col_1 p a {
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(255, 255, 255, 0.8);
           text-decoration: none; }
       .cta_feedback_section .wrap_section .col_1 .btn {
         margin-left: auto;
@@ -825,16 +825,20 @@ section {
       padding: 20px; }
       .cta_feedback_section .wrap_section .col_1 h2 {
         font-size: 28px; }
-      .cta_feedback_section .wrap_section .col_1 p a {
-        font-size: 28px; } }
+      .cta_feedback_section .wrap_section .col_1 p {
+        font-size: 28px; }
+        .cta_feedback_section .wrap_section .col_1 p a {
+          font-size: 28px; } }
   @media screen and (max-width: 400px) {
     .cta_feedback_section .wrap_section .col_1 {
       gap: 35px;
       padding: 20px; }
       .cta_feedback_section .wrap_section .col_1 h2 {
         font-size: 24px; }
-      .cta_feedback_section .wrap_section .col_1 p a {
-        font-size: 24px; } }
+      .cta_feedback_section .wrap_section .col_1 p {
+        font-size: 24px; }
+        .cta_feedback_section .wrap_section .col_1 p a {
+          font-size: 24px; } }
 
 .news_sales_secton .wrap_section h2 {
   text-transform: none;
