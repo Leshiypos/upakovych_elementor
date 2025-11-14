@@ -956,7 +956,7 @@ function examples_use_section_func(){
 ?>
       <section class="examples_use_section">
         <div class="wrap_section">
-          <h2>Где применяются наши мешки</h2>
+          <h2><?php echo $examples_use["title"] ? $examples_use["title"] : "Где применяются"; ?></h2>
           <div class="img_block">
 			<?php 
 			if ($examples_use && !empty($examples_use['imgs'])){
