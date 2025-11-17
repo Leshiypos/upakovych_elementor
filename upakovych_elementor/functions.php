@@ -61,6 +61,7 @@ if ( ! function_exists( 'hello_elementor_setup' ) ) {
 					'flex-width'  => true,
 				]
 			);
+			add_image_size( "article", "600", "600", false );
 
 			/*
 			 * Editor Style.
