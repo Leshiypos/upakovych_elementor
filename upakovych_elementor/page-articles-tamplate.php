@@ -67,22 +67,23 @@ while ( have_posts() ) :
 	   <?php 
 	 	$arg = [
 			'post_type' => 'post',
+			'paged' => 1,
 			'posts_per_page' => 9,
 			'category_name' => 'articles',
 		];  
-		$article_posts = get_posts($arg);
+		$query = new WP_Query($arg);
 	   ?>
       <section class="articles_section">
         <div class="wrap_section">
           <h2>Все статьи</h2>
 		  <?php 
-		 	if (!empty($article_posts)){
+		 	if ($query->have_posts()){
 			?>
-          <div class="articles">
+          <div class="articles" id="article_wrap">
             
 			 <?php 
-			 	foreach ($article_posts as $post){
-					setup_postdata($post)
+			 	while ($query->have_posts()){
+					$query->the_post();
 				?>
 				<!-- Статья -->
 				<div class="article">
@@ -105,7 +106,6 @@ while ( have_posts() ) :
 				<!-- КОНЕЦ Статья -->
 			<?php
 				}
-				wp_reset_postdata();
 			 ?>
           </div>
 			<?php
@@ -115,9 +115,20 @@ while ( have_posts() ) :
 		  ?>
 
           <!-- Кнопка -->
-          <div class="btn_block">
-            <a href="/katalog-tovarov/" class="btn cta_primary">Перейти в каталог</a>
-          </div>
+		   <?php 
+		 	global $wp_query;
+			$paged = $query->paged ? $query->paged : 1;
+			$max_pages = $query->max_num_pages;
+			if ($paged < $max_pages){
+			?>
+			<div class="btn_block">
+				<a href="/katalog-tovarov/" id="load_more" class="btn cta_primary" data-max_pages="<?php echo $max_pages; ?>" data-paged="<?php echo $paged; ?>"><span>Показать еще</span><div class="loader"></div></a>
+			</div>
+			<?
+			}
+		   ?>
+		   <?php wp_reset_postdata(); ?>
+
         </div>
       </section>
 

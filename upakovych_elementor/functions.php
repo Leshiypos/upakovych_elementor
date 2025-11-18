@@ -403,6 +403,9 @@ require get_template_directory() . '/includes/shortcodes-sections-custome.php';
 // Редактирование шаблонов woo (хуки)
 require get_template_directory() . '/includes/woo/hooks_woo.php';
 
+// ajax запросы
+require get_template_directory() . '/includes/ajax.php';
+
 
 // Добавляем облако тэгов
 
