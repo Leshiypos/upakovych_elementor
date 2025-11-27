@@ -2278,3 +2278,8 @@ main {
     min-width: 180px;
   }
 }
+
+/* Добавляем приставку от */
+.elementor-widget-container > .price ins .woocommerce-Price-amount:before {
+  content: "от ";
+}

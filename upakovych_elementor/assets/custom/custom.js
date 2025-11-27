@@ -282,4 +282,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   //   maxHeight(".archive.tax-product_cat ul.products>li");
   maxHeight("ul.products>li");
+
+  //   Устанавливаем чекбокс формы заказа Политики конфенденциальности по умолчанию в чекед
+  (function () {
+    const CHECKBOX_ID = "mailpoet_woocommerce_checkout_optin";
+
+    function setMailpoetOptinChecked() {
+      const checkbox = document.getElementById(CHECKBOX_ID);
+      if (!checkbox) return;
+
+      checkbox.checked = true;
+      // чтобы плагины отреагировали
+      checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    // 1. Ставим галку при первой загрузке
+    setMailpoetOptinChecked();
+
+    // 2. После каждого AJAX-обновления WooCommerce ставим её снова
+    if (window.jQuery) {
+      jQuery(function ($) {
+        $("body").on("updated_checkout", setMailpoetOptinChecked);
+      });
+    } else {
+      // На всякий случай — если вдруг без jQuery
+      document.body.addEventListener(
+        "updated_checkout",
+        setMailpoetOptinChecked
+      );
+    }
+  })();
 });

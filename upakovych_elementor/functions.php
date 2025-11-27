@@ -623,3 +623,11 @@ add_action('admin_head', function () {
       .media-icon img[src$=".svg"]{ width:100%; height:auto; }
     </style>';
 });
+
+
+// add_filter('woocommerce_get_price_html', function($price) {
+//     if (is_product()) {
+//         return 'от ' . $price;
+//     }
+//     return $price;
+// });
