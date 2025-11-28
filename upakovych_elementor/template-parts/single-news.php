@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Шаблон
+ * Template Name: Новость
  * Template Post Type: post
  */
 /**
