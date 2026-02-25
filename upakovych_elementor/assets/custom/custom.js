@@ -184,7 +184,7 @@ window.addEventListener("load", () => {
       }
     });
     let burger_cat_but_cross = document.querySelector(
-      "#burger_catalog_button_cross"
+      "#burger_catalog_button_cross",
     );
     burger_cat_but_cross.addEventListener("click", () => {
       menu_cat_active.classList.remove("active");
@@ -308,8 +308,59 @@ document.addEventListener("DOMContentLoaded", () => {
       // На всякий случай — если вдруг без jQuery
       document.body.addEventListener(
         "updated_checkout",
-        setMailpoetOptinChecked
+        setMailpoetOptinChecked,
       );
     }
   })();
+
+  //Секция Вопросы
+  hiddenLiQuestionsSection();
 });
+
+// MARK: Кнопка срыть пункты секции Вопросы
+function hiddenLiQuestionsSection() {
+  const LIMIT = 10;
+
+  // контейнер аккордеона
+  const acc = document.querySelector(".e-n-accordion");
+  if (!acc) return;
+
+  const items = Array.from(acc.querySelectorAll("details.e-n-accordion-item"));
+  if (items.length <= LIMIT) return;
+
+  // скрываем всё после 10
+  const hidden = items.slice(LIMIT);
+  hidden.forEach((el) => {
+    el.style.display = "none";
+    el.dataset.faqHidden = "1";
+  });
+
+  // кнопка
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn cta_primary questions";
+  btn.textContent = "Показать все";
+  btn.style.marginTop = "16px";
+
+  // вставим кнопку после аккордеона
+  acc.parentNode.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    const isExpanded = btn.dataset.expanded === "1";
+
+    if (!isExpanded) {
+      // показать скрытые
+      hidden.forEach((el) => (el.style.display = ""));
+      btn.textContent = "Скрыть";
+      btn.dataset.expanded = "1";
+    } else {
+      // снова скрыть
+      hidden.forEach((el) => (el.style.display = "none"));
+      btn.textContent = "Показать все";
+      btn.dataset.expanded = "0";
+
+      // прокрутка к началу списка (по желанию)
+      acc.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
