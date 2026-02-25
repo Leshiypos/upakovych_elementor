@@ -370,14 +370,15 @@ function hiddenLiQuestionsSection() {
 
 // Кнопка скрыть товары
 function hiddenProduct() {
-  const LIMIT = 8;
+  let LIMIT = 8;
 
   // контейнер аккордеона
-  const productList = document.querySelector(
-    ".products.columns-5.flex-products",
-  );
+  let productList = document.querySelector(".products.columns-5.flex-products");
+  if (!productList) {
+    productList = document.querySelector(".products.columns-5");
+    LIMIT = 10;
+  }
   if (!productList) return;
-
   const items = Array.from(productList.querySelectorAll("li.product"));
   if (items.length <= LIMIT) return;
 

@@ -1428,7 +1428,7 @@ form.woocommerce-checkout {
   .e-con-inner.catalog {
     position: fixed;
     left: 0;
-    top: 42px;
+    top: 30px;
     z-index: 99;
   }
   .mobile_cotalog_menu #list_menu_catalog {
