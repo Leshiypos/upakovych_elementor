@@ -586,7 +586,7 @@ p.woocommerce-store-notice.demo_store {
 }
 .archive.tax-product_cat ul.products > li,
 ul.products > li {
-  display: flex !important;
+  display: flex;
   flex-direction: column !important;
   justify-content: space-between !important;
 }
@@ -1101,7 +1101,7 @@ form.woocommerce-checkout {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Мобильное меню сайта */
+/* MARK: Мобильное меню сайта */
 .header_mobile {
   display: flex;
   flex-direction: column;
@@ -1258,7 +1258,7 @@ form.woocommerce-checkout {
   align-items: center;
   justify-content: center;
 }
-/* Мобильное меню каталога */
+/* MARK: Мобильное меню каталога */
 .mobile_cotalog_menu {
   position: relative;
   width: fit-content;
@@ -1289,6 +1289,9 @@ form.woocommerce-checkout {
   padding: 5px;
   background-color: rgb(0, 128, 129);
   border-radius: 3px;
+}
+.mobile_cotalog_menu .burger_menu .text {
+  display: none;
 }
 #burger_catalog_button_cross {
   width: 18px;
@@ -1418,9 +1421,65 @@ form.woocommerce-checkout {
 .e-con-inner.catalog {
   margin: 25px 10px;
 }
+.main_content_product .left_menu_sidebar {
+  display: none;
+}
 @media screen and (min-width: 701px) {
   .e-con-inner.catalog {
+    position: fixed;
+    left: 0;
+    z-index: 99;
+  }
+  .mobile_cotalog_menu #list_menu_catalog {
+    border-radius: 0 20px 20px 0;
+    border: 1px solid white;
+  }
+  .mobile_cotalog_menu .burger_menu {
+    background-color: rgb(187, 208, 40);
+    padding: 20px 10px;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    position: fixed;
+    left: 0;
+    cursor: pointer;
+    animation: shake 15s infinite;
+  }
+  @keyframes shake {
+    /* дергание начинается в самом конце цикла */
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(0);
+    }
+    12% {
+      transform: translateX(-8px);
+    }
+    13% {
+      transform: translateX(-2px);
+    }
+    16% {
+      transform: translateX(-5px);
+    }
+    18% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .mobile_cotalog_menu .burger_menu .text {
+    display: block;
+    writing-mode: vertical-rl;
+  }
+
+  .mobile_cotalog_menu .burger_menu img {
     display: none;
+  }
+}
+@media screen and (min-width: 701px) {
+  .e-con-inner.catalog {
+    /* display: none; */
   }
 }
 .woocommerce-breadcrumb {

@@ -147,7 +147,7 @@ window.addEventListener("load", () => {
   let burger_but = document.querySelector("#burger_button img");
   let menu_active = document.querySelector(".header_mobile .mobile_menu_list");
   let menu_cat_active = document.querySelector(".wrap_menu_catalog");
-  let burger_cat_but = document.querySelector("#burger_catalog_button img");
+  let burger_cat_but = document.querySelector("#burger_catalog_button");
 
   //   menu_active.classList.add("not_active");
   burger_but.addEventListener("click", () => {
@@ -315,6 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Секция Вопросы
   hiddenLiQuestionsSection();
+
+  //   Срыть лишние товары
+  hiddenProduct();
 });
 
 // MARK: Кнопка срыть пункты секции Вопросы
@@ -361,6 +364,65 @@ function hiddenLiQuestionsSection() {
 
       // прокрутка к началу списка (по желанию)
       acc.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
+
+// Кнопка скрыть товары
+function hiddenProduct() {
+  const LIMIT = 8;
+
+  // контейнер аккордеона
+  const productList = document.querySelector(
+    ".products.columns-5.flex-products",
+  );
+  if (!productList) return;
+
+  const items = Array.from(productList.querySelectorAll("li.product"));
+  if (items.length <= LIMIT) return;
+
+  // скрываем всё после 10
+  const hidden = items.slice(LIMIT);
+  hidden.forEach((el) => {
+    el.style.display = "none";
+    el.dataset.faqHidden = "1";
+  });
+
+  // кнопка
+  const btnBlock = document.createElement("div");
+  btnBlock.style.width = "100%";
+  btnBlock.style.display = "flex";
+  btnBlock.style.justifyContent = "center";
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "btn cta_secondary show_more_product";
+  btn.textContent = "Показать все";
+  btn.style.marginBottom = "16px";
+  btn.style.marginTop = "-16px";
+  btn.style.marginLeft = "auto";
+  btn.style.marginRight = "auto";
+  btnBlock.appendChild(btn);
+
+  // вставим кнопку после аккордеона
+  productList.parentNode.appendChild(btnBlock);
+
+  btn.addEventListener("click", () => {
+    const isExpanded = btn.dataset.expanded === "1";
+
+    if (!isExpanded) {
+      // показать скрытые
+      hidden.forEach((el) => (el.style.display = ""));
+      btn.textContent = "Скрыть";
+      btn.dataset.expanded = "1";
+    } else {
+      // снова скрыть
+      hidden.forEach((el) => (el.style.display = "none"));
+      btn.textContent = "Показать все";
+      btn.dataset.expanded = "0";
+
+      // прокрутка к началу списка (по желанию)
+      productList.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 }
