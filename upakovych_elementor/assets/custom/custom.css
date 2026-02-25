@@ -1428,6 +1428,7 @@ form.woocommerce-checkout {
   .e-con-inner.catalog {
     position: fixed;
     left: 0;
+    top: 42px;
     z-index: 99;
   }
   .mobile_cotalog_menu #list_menu_catalog {
@@ -1437,6 +1438,7 @@ form.woocommerce-checkout {
   .mobile_cotalog_menu .burger_menu {
     background-color: rgb(187, 208, 40);
     padding: 20px 10px;
+    margin-top: 180px;
     border-radius: 0 10px 10px 0;
     color: white;
     position: fixed;

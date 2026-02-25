@@ -201,7 +201,9 @@ function main_advantages_section_func()
 									<img
 										decoding="async"
 										src="<?php echo $card['icon_url']; ?>"
-										alt="Упаковка" />
+										alt="Упаковка"
+										class="svg_icon " />
+
 									<h3><?php echo $card['title_card']; ?></h3>
 								</div>
 								<p><?php echo $card['description_card']; ?></p>
