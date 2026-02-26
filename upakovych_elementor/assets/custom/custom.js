@@ -167,8 +167,23 @@ window.addEventListener("load", () => {
     }
   });
   //   КОНЕЦ Кнопка главного мобильного меню
+  if (menu_cat_active) {
+    document.addEventListener("click", (e) => {
+      const target = e.target;
 
+      const clickInsideMenu = target.closest(".wrap_menu_catalog");
+      const clickOnCatalogBtn = target.closest("#burger_catalog_button");
+      const clickOnCatalogCloseBtn = target.closest(
+        "#burger_catalog_button_cross",
+      );
+
+      if (!clickInsideMenu && !clickOnCatalogBtn && !clickOnCatalogCloseBtn) {
+        menu_cat_active.classList.remove("active");
+      }
+    });
+  }
   //   Кнопка каталога мобильного меню
+
   if (burger_cat_but) {
     burger_cat_but.addEventListener("click", () => {
       menu_active.classList.add("not_active");

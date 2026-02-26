@@ -92,8 +92,16 @@ function hero_section_func()
 							</p>
 						</div>
 						<div class="wrap_btn flex_row">
-							<a href="/katalog-tovarov/" class="btn cta_primary ">Перейти в каталог</a>
-							<a href="#" class="btn cta_secondary">Рассчитать стоимость</a>
+							<a href="<?php
+										if (is_shop() || is_product_category() || is_product_tag()) {
+											echo '#product_category';
+										} else {
+											echo home_url('/katalog-tovarov/');
+										}
+										?>" class="btn cta_primary">
+								Перейти в каталог
+							</a>
+							<a href="#request_call" class="btn cta_secondary request_call">Рассчитать стоимость</a>
 						</div>
 					</div>
 					<div class="slider_wrap">

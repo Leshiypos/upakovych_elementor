@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -15,9 +16,9 @@
  * @version 8.6.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-get_header( 'shop' );
+get_header('shop');
 
 /**
  * Hook: woocommerce_before_main_content.
@@ -26,7 +27,7 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
+do_action('woocommerce_before_main_content');
 
 echo '<div class="main_content_product">';
 /**
@@ -36,9 +37,9 @@ echo '<div class="main_content_product">';
  *
  * @hooked woocommerce_product_taxonomy_archive_header - 10
  */
-do_action( 'woocommerce_shop_loop_header' );
+do_action('woocommerce_shop_loop_header');
 
-if ( woocommerce_product_loop() ) {
+if (woocommerce_product_loop()) {
 
 	/**
 	 * Hook: woocommerce_before_shop_loop.
@@ -47,38 +48,38 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_result_count - 20
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
-	do_action( 'woocommerce_before_shop_loop' );
-	
+	do_action('woocommerce_before_shop_loop');
+
 	echo '<div id="fe-container">';
 	woocommerce_product_loop_start();
 
 	// 1) Подкатегории (своё обёртывание UL)
-	$has_subcats = woocommerce_product_subcategories( array(
+	$has_subcats = woocommerce_product_subcategories(array(
 		'before' => '<ul class="products columns-5 subcats">',
 		'after'  => '</ul>',
-	) );
+	));
 
 	// 2) Разделитель (вне UL)
-	if ( $has_subcats ) {
-			echo '
+	if ($has_subcats) {
+		echo '
 	</ul>
-	<h2>Товары в категории</h2><br>
+	<h2 id="product_category">Товары в категории</h2><br>
 	<ul class="products columns-5 flex-products">
 	'; // разрыв
 	}
 
 
 
-	if ( wc_get_loop_prop( 'total' ) ) {
-		while ( have_posts() ) {
+	if (wc_get_loop_prop('total')) {
+		while (have_posts()) {
 			the_post();
 
 			/**
 			 * Hook: woocommerce_shop_loop.
 			 */
-			do_action( 'woocommerce_shop_loop' );
-			
-			wc_get_template_part( 'content', 'product' );
+			do_action('woocommerce_shop_loop');
+
+			wc_get_template_part('content', 'product');
 		}
 	}
 
@@ -89,14 +90,14 @@ if ( woocommerce_product_loop() ) {
 	 *
 	 * @hooked woocommerce_pagination - 10
 	 */
-	do_action( 'woocommerce_after_shop_loop' );
+	do_action('woocommerce_after_shop_loop');
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
 	 *
 	 * @hooked wc_no_products_found - 10
 	 */
-	do_action( 'woocommerce_no_products_found' );
+	do_action('woocommerce_no_products_found');
 }
 
 echo '</div>';
@@ -107,12 +108,12 @@ echo '</div>';
  * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
  */
 
-do_action( 'woocommerce_after_main_content' );
+do_action('woocommerce_after_main_content');
 
 /**
  * Hook: woocommerce_sidebar.
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action( 'woocommerce_sidebar' );
-get_footer( 'shop' );
+do_action('woocommerce_sidebar');
+get_footer('shop');
