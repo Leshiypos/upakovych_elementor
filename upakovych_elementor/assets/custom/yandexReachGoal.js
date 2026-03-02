@@ -22,15 +22,15 @@ window.addEventListener("load", () => {
       sendRichGoal(
         ".wc-block-components-checkout-place-order-button",
         "buy",
-        "click"
+        "click",
       ),
-    500
+    500,
   );
 
   //   кнопка подтвердить заказ
   setTimeout(
     () => sendRichGoal(".woocommerce-checkout #place_order", "buy", "click"),
-    500
+    500,
   );
 
   // Событие нажатия на кнопку отправки формы
@@ -38,35 +38,62 @@ window.addEventListener("load", () => {
   sendRichGoal("#metform-wrap-291ed67b-314 .metform-btn", "send_form", "click");
 
   //   отправка формы - заказать звонок
-  function catchMetformSuccess(selector, target) {
+  function catchMetformSuccess(selector, target, attempt = 0) {
     const responseWrap = document.querySelector(selector);
+
     if (!responseWrap) {
-      // Если форма еще не появилась — повторяем попытку через 200мс
-      setTimeout(catchMetformSuccess, 200);
+      if (attempt >= 50) return; // ~10 сек
+      setTimeout(() => catchMetformSuccess(selector, target, attempt + 1), 200);
       return;
     }
-    const observer = new MutationObserver(function (mutations) {
-      mutations.forEach(function (mutation) {
-        // Признак успешной отправки: появление класса .mf-success-icon с ненулевой видимостью
-        if (responseWrap.querySelector(".mf-success-icon")) {
-          // Сработает ОДИН раз
-          observer.disconnect();
-          ym(100712159, "reachGoal", target);
-          console.log(`Событие отправки формы сработало ${target}`);
-          // Твои действия, например:
-          if (typeof PUM !== "undefined") {
-            PUM.close(6653);
-          } else {
-            document.querySelector("#pum-6653 .pum-close")?.click();
-          }
-        }
-      });
+
+    const isSuccess = () => {
+      // ВАЖНО: в твоём HTML data-show="0" до отправки
+      const shown = responseWrap.getAttribute("data-show") === "1";
+      const hasIcon = !!responseWrap.querySelector(".mf-success-icon");
+      // иногда текст пустой, но data-show=1 уже достаточно
+      return shown && hasIcon;
+    };
+
+    // если вдруг уже "успех" (например после ajax-рендера)
+    if (isSuccess()) {
+      fire();
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (!isSuccess()) return;
+      observer.disconnect();
+      fire();
     });
-    observer.observe(responseWrap, { childList: true, subtree: true });
+
+    // следим и за DOM, и за атрибутом data-show
+    observer.observe(responseWrap, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["data-show", "class"],
+    });
+
+    function fire() {
+      if (typeof ym === "function") {
+        ym(100712159, "reachGoal", target);
+        console.log(`Metform success → цель отправлена: ${target}`);
+      } else {
+        console.log(`Metform success, но ym не найден: ${target}`);
+      }
+
+      if (typeof PUM !== "undefined" && typeof PUM.close === "function") {
+        PUM.close(6653);
+      } else {
+        document.querySelector("#pum-6653 .pum-close")?.click();
+      }
+    }
   }
+
   catchMetformSuccess(
     "#metform-wrap-6644-6644 .mf-main-response-wrap",
-    "call_order"
+    "call_order",
   );
 
   //   Отправка формы "Купить в один клик" - тк форма генерируется динамически
@@ -93,14 +120,14 @@ window.addEventListener("load", () => {
         ym(100712159, "reachGoal", "opt");
       }
     },
-    false
+    false,
   );
 
   //   Отправка форм обратной связи на главной
   function observeMetformSuccess(formWrapperId, onSuccess) {
     function waitAndObserve() {
       const responseWrap = document.querySelector(
-        `#${formWrapperId} .mf-main-response-wrap`
+        `#${formWrapperId} .mf-main-response-wrap`,
       );
       if (!responseWrap) {
         setTimeout(waitAndObserve, 200); // Ждём появления формы, если она появляется динамически
